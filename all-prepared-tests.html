@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>All Prepared Tests | Biotechnology Questions</title>
+
+
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background: #f4f8f8;
+  color: #173b40;
+}
+
+.header {
+  background: linear-gradient(135deg, #087f8c, #0aa3a8);
+  color: white;
+  padding: 20px;
+}
+
+.header-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.header h1 {
+  font-size: 21px;
+}
+
+.header p {
+  font-size: 12px;
+  margin-top: 5px;
+  opacity: .9;
+}
+
+button {
+  cursor: pointer;
+  font-family: Arial, sans-serif;
+}
+
+.back-btn {
+  border: 0;
+  background: white;
+  color: #087f8c;
+  padding: 9px 13px;
+  border-radius: 10px;
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+.container {
+  max-width: 900px;
+  margin: auto;
+  padding: 20px;
+}
+
+.search-box {
+  background: white;
+  padding: 16px;
+  border-radius: 16px;
+  box-shadow: 0 5px 18px #0000000f;
+  margin-bottom: 16px;
+}
+
+.search-box input {
+  width: 100%;
+  padding: 13px 15px;
+  border: 1px solid #d6e4e5;
+  border-radius: 11px;
+  outline: none;
+  font-size: 14px;
+  color: #173b40;
+}
+
+.search-box input:focus {
+  border-color: #0aa3a8;
+}
+
+.filters {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 5px;
+  margin-bottom: 18px;
+}
+
+.filter-btn {
+  border: 1px solid #cfe0e1;
+  background: white;
+  color: #315c61;
+  padding: 9px 15px;
+  border-radius: 20px;
+  white-space: nowrap;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.filter-btn.active {
+  background: #087f8c;
+  color: white;
+  border-color: #087f8c;
+}
+
+.test-card {
+  background: white;
+  border-radius: 17px;
+  padding: 18px;
+  margin-bottom: 14px;
+  box-shadow: 0 5px 18px #0000000f;
+  border: 1px solid #e5eeee;
+}
+
+.test-card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.test-card-header h3 {
+  flex: 1;
+  min-width: 0;
+  font-size: 17px;
+  line-height: 1.45;
+  font-weight: 800;
+  color: #123f45;
+  overflow-wrap: anywhere;
+}
+
+.test-type {
+  display: inline-block;
+  background: #eef8f7;
+  color: #087f8c;
+  padding: 6px 9px;
+  border-radius: 8px;
+  font-size: 11px;
+  font-weight: bold;
+  overflow-wrap: anywhere;
+}
+
+.test-info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 15px;
+}
+
+.test-info p {
+  background: #eef8f7;
+  color: #315c61;
+  padding: 8px 10px;
+  border-radius: 8px;
+  font-size: 12px;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.test-info strong {
+  color: #173b40;
+}
+
+.test-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  padding-top: 2px;
+}
+
+.action-btn {
+  border: 0;
+  padding: 9px 12px;
+  border-radius: 9px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.preview-btn,
+.edit-btn,
+.copy-btn,
+.delete-btn {
+  border: 0;
+  padding: 9px 12px;
+  border-radius: 9px;
+  font-size: 12px;
+  font-weight: bold;
+  transition: opacity .2s ease;
+}
+
+.preview-btn {
+  background: #fff4df;
+  color: #9a6500;
+}
+
+.edit-btn {
+  background: #e7f5f5;
+  color: #087f8c;
+}
+
+.copy-btn {
+  background: #f1f0ff;
+  color: #5546a6;
+}
+
+.delete-btn {
+  background: #ffe9e9;
+  color: #b83232;
+}
+
+.preview-btn:hover,
+.edit-btn:hover,
+.copy-btn:hover,
+.delete-btn:hover {
+  opacity: .8;
+}
+
+.empty,
+.empty-state {
+  text-align: center;
+  background: white;
+  padding: 35px 20px;
+  border-radius: 16px;
+  color: #648084;
+  box-shadow: 0 5px 18px #0000000f;
+}
+
+.empty-state h3 {
+  font-size: 17px;
+  color: #173b40;
+  margin-bottom: 8px;
+}
+
+.empty-state p {
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.pagination {
+  display: none;
+}
+
+@media (max-width: 600px) {
+  .container {
+    padding: 14px;
+  }
+
+  .header {
+    padding: 16px;
+  }
+
+  .header h1 {
+    font-size: 18px;
+  }
+
+  .test-card {
+    padding: 15px;
+  }
+
+  .test-card-header h3 {
+    font-size: 16px;
+  }
+
+  .test-info {
+    gap: 7px;
+  }
+
+  .test-info p {
+    padding: 7px 9px;
+  }
+
+  .test-actions {
+    gap: 7px;
+  }
+
+  .preview-btn,
+  .edit-btn,
+  .copy-btn,
+  .delete-btn {
+    flex: 1;
+    min-width: 65px;
+    padding: 9px 7px;
+  }
+}
+</style>
+
+</head>
+
+<body>
+
+<header class="header">
+  <div class="header-top">
+    <div>
+      <h1>📋 All Prepared Tests</h1>
+      <p>Manage Practice, Mock &amp; PYQ tests</p>
+    </div>
+
+    <button class="back-btn" onclick="goBack()">
+      ← Back
+    </button>
+  </div>
+</header>
+
+<main class="container">
+
+  <div class="search-box">
+    <input
+      type="text"
+      id="searchInput"
+      placeholder="Search test, exam or subject..."
+      oninput="applyFilters()">
+  </div>
+
+  <div class="filters">
+
+    <button class="filter-btn active"
+      data-filter="all"
+      onclick="setFilter('all')">
+      All
+    </button>
+
+    <button class="filter-btn"
+      data-filter="practice"
+      onclick="setFilter('practice')">
+      Practice
+    </button>
+
+    <button class="filter-btn"
+      data-filter="mock"
+      onclick="setFilter('mock')">
+      Mock
+    </button>
+
+    <button class="filter-btn"
+      data-filter="pyq"
+      onclick="setFilter('pyq')">
+      PYQ
+    </button>
+
+  </div>
+
+  <div id="testsContainer"></div>
+
+  <div id="pagination" class="pagination"></div>
+
+</main>
+
+<script>
+  // ===== TEST DATA AND PAGE STATE =====
+
+let allTests = [];
+let filteredTests = [];
+
+const testsContainer = document.getElementById("testsContainer");
+const searchInput = document.getElementById("searchInput");
+const pagination = document.getElementById("pagination");
+
+let activeFilter = "all";
+
+
+// ===== SAFE TEXT DISPLAY =====
+
+function escapeHTML(value) {
+  return String(value ?? "").replace(/[&<>"']/g, function (char) {
+    const entities = {
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    };
+
+    return entities[char];
+  });
+}
+
+
+// ===== LOAD SAVED TESTS =====
+
+function loadTests() {
+  try {
+    const saved = localStorage.getItem("bq_tests");
+    const parsed = saved ? JSON.parse(saved) : [];
+
+    allTests = Array.isArray(parsed) ? parsed : [];
+  } catch (error) {
+    console.error("Unable to load saved tests:", error);
+    allTests = [];
+  }
+
+  applyFilters();
+}
+
+
+// ===== SAVE TESTS =====
+
+function saveTests() {
+  localStorage.setItem("bq_tests", JSON.stringify(allTests));
+}
+
+
+// ===== SEARCH AND FILTER =====
+
+function setFilter(filter) {
+  activeFilter = filter;
+
+  document.querySelectorAll(".filter-btn").forEach(function (button) {
+    button.classList.toggle(
+      "active",
+      button.dataset.filter === filter
+    );
+  });
+
+  applyFilters();
+}
+
+
+function applyFilters() {
+  const searchText = (searchInput?.value || "")
+    .trim()
+    .toLowerCase();
+
+  filteredTests = allTests.filter(function (test) {
+    const name = String(test.name || "").toLowerCase();
+    const subject = String(test.subject || "").toLowerCase();
+    const exam = String(test.exam || "").toLowerCase();
+
+    const matchesSearch =
+      name.includes(searchText) ||
+      subject.includes(searchText) ||
+      exam.includes(searchText);
+
+    const testType = String(
+      test.type || test.testType || "practice"
+    ).toLowerCase();
+
+    const matchesFilter =
+      activeFilter === "all" ||
+      testType === activeFilter;
+
+    return matchesSearch && matchesFilter;
+  });
+
+  renderTests();
+}
+
+
+// ===== RENDER TEST CARDS =====
+
+function renderTests() {
+  testsContainer.innerHTML = "";
+
+  // Normal view: maximum 4 tests.
+  // Search/filter view: show every matching test.
+  const searchText = (searchInput?.value || "").trim();
+
+  const hasActiveSearchOrFilter =
+    searchText !== "" || activeFilter !== "all";
+
+  const visibleTests = hasActiveSearchOrFilter
+    ? filteredTests
+    : filteredTests.slice(0, 4);
+
+  if (pagination) {
+    pagination.style.display = "none";
+    pagination.innerHTML = "";
+  }
+
+  if (visibleTests.length === 0) {
+    testsContainer.innerHTML = `
+      <div class="empty-state">
+        <h3>No tests found</h3>
+        <p>Try another search or filter.</p>
+      </div>
+    `;
+    return;
+  }
+
+  visibleTests.forEach(function (test) {
+    testsContainer.appendChild(createTestCard(test));
+  });
+}
+
+
+// ===== CREATE ONE TEST CARD =====
+
+function createTestCard(test) {
+  const card = document.createElement("div");
+  card.className = "test-card";
+
+  const name = escapeHTML(test.name || "Untitled Test");
+  const subject = escapeHTML(test.subject || "Not specified");
+  const exam = escapeHTML(test.exam || "Not specified");
+
+  const type = escapeHTML(
+    test.type || test.testType || "Practice"
+  );
+
+  const questions = Number(
+    test.totalQuestions ?? test.questions?.length ?? 0
+  );
+
+  const marks = Number(
+    test.totalMarks ?? test.maxMarks ?? 0
+  );
+
+  card.innerHTML = `
+    <div class="test-card-header">
+      <h3>${name}</h3>
+      <span class="test-type">${type}</span>
+    </div>
+
+    <div class="test-info">
+      <p><strong>Subject:</strong> ${subject}</p>
+      <p><strong>Exam:</strong> ${exam}</p>
+      <p><strong>Questions:</strong> ${questions}</p>
+      <p><strong>Total Marks:</strong> ${marks}</p>
+    </div>
+
+    <div class="test-actions">
+      <button type="button" class="preview-btn">Preview</button>
+      <button type="button" class="edit-btn">Edit</button>
+      <button type="button" class="copy-btn">Copy</button>
+      <button type="button" class="delete-btn">Delete</button>
+    </div>
+  `;
+
+  card.querySelector(".preview-btn").addEventListener(
+    "click",
+    function () {
+      previewTest(test.id);
+    }
+  );
+
+  card.querySelector(".edit-btn").addEventListener(
+    "click",
+    function () {
+      editTest(test.id);
+    }
+  );
+
+  card.querySelector(".copy-btn").addEventListener(
+    "click",
+    function () {
+      copyTest(test.id);
+    }
+  );
+
+  card.querySelector(".delete-btn").addEventListener(
+    "click",
+    function () {
+      deleteTest(test.id);
+    }
+  );
+
+  return card;
+}
+  // ===== FIND TEST =====
+
+function findTest(testId) {
+  return allTests.find(function (test) {
+    return String(test.id) === String(testId);
+  });
+}
+
+
+// ===== PREVIEW TEST =====
+
+function previewTest(testId) {
+  const test = findTest(testId);
+
+  if (!test) {
+    alert("Test not found.");
+    return;
+  }
+
+  window.location.href =
+    "student-test.html?id=" + encodeURIComponent(test.id);
+}
+
+
+// ===== EDIT TEST =====
+
+function editTest(testId) {
+  const test = findTest(testId);
+
+  if (!test) {
+    alert("Test not found.");
+    return;
+  }
+
+  sessionStorage.setItem(
+    "bq_current_test",
+    JSON.stringify(test)
+  );
+
+  window.location.href = "test-manager2.html";
+}
+
+
+// ===== COPY TEST =====
+
+function copyTest(testId) {
+  const test = findTest(testId);
+
+  if (!test) {
+    alert("Test not found.");
+    return;
+  }
+
+  const copiedTest = JSON.parse(JSON.stringify(test));
+
+  copiedTest.id =
+    "test_" + Date.now() + "_" +
+    Math.random().toString(36).slice(2, 7);
+
+  copiedTest.name = (test.name || "Untitled Test") + " (Copy)";
+
+  allTests.push(copiedTest);
+  saveTests();
+  applyFilters();
+
+  alert("Test copied successfully.");
+}
+
+
+// ===== DELETE TEST =====
+
+function deleteTest(testId) {
+  const test = findTest(testId);
+
+  if (!test) {
+    alert("Test not found.");
+    return;
+  }
+
+  const confirmed = confirm(
+    'Delete "' + (test.name || "Untitled Test") + '"?'
+  );
+
+  if (!confirmed) return;
+
+  allTests = allTests.filter(function (item) {
+    return String(item.id) !== String(testId);
+  });
+
+  saveTests();
+  applyFilters();
+
+  alert("Test deleted successfully.");
+}
+
+
+// ===== SEARCH LISTENER =====
+
+if (searchInput) {
+  searchInput.addEventListener("input", applyFilters);
+}
+
+
+// ===== FILTER BUTTON LISTENERS =====
+
+document.querySelectorAll(".filter-btn").forEach(
+  function (button) {
+    button.addEventListener("click", function () {
+      setFilter(button.dataset.filter);
+    });
+  }
+);
+
+
+// ===== BACK BUTTON =====
+
+function goBack() {
+  window.location.href = "admin-dashboard.html";
+}
+
+
+// ===== INITIAL LOAD =====
+
+loadTests();
+
+</script>
+</body>
+</html>

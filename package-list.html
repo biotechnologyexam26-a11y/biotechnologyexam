@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>
+Packages | Biotechnology Questions
+</title>
+
+<style>
+
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+body{
+  font-family:Arial,sans-serif;
+  background:
+    linear-gradient(
+      180deg,
+      #f2f8f8,
+      #fff
+    );
+
+  color:#183b40;
+}
+
+.wrap{
+  width:92%;
+  max-width:1050px;
+  margin:25px auto 50px;
+}
+
+.hero{
+  background:
+    linear-gradient(
+      135deg,
+      #123f46,
+      #197278
+    );
+
+  color:#fff;
+
+  border-radius:22px;
+
+  padding:28px 22px;
+
+  margin-bottom:20px;
+}
+
+.hero h1{
+  font-size:28px;
+  margin-bottom:7px;
+}
+
+.hero p{
+  opacity:.86;
+  font-size:14px;
+}
+
+.toolbar{
+  background:#fff;
+
+  border:1px solid #e2eaec;
+
+  border-radius:14px;
+
+  padding:12px;
+
+  margin-bottom:18px;
+}
+
+.toolbar input{
+  width:100%;
+
+  padding:11px;
+
+  border:1px solid #d8e2e5;
+
+  border-radius:10px;
+
+  font:inherit;
+}
+
+.grid{
+  display:grid;
+
+  grid-template-columns:
+    repeat(2,1fr);
+
+  gap:16px;
+}
+
+.card{
+  background:#fff;
+
+  border:1px solid #e2eaec;
+
+  border-radius:18px;
+
+  padding:19px;
+
+  box-shadow:
+    0 5px 18px
+    rgba(0,0,0,.05);
+}
+
+.card h2{
+  font-size:18px;
+}
+
+.desc{
+  font-size:13px;
+
+  color:#64748b;
+
+  line-height:1.55;
+
+  margin:8px 0 13px;
+}
+
+.meta{
+  font-size:12px;
+
+  color:#526b70;
+
+  line-height:1.7;
+}
+
+.price{
+  font-size:22px;
+
+  font-weight:800;
+
+  color:#123f46;
+
+  margin:12px 0;
+}
+
+.badge{
+  display:inline-block;
+
+  padding:5px 9px;
+
+  border-radius:20px;
+
+  font-size:10px;
+
+  font-weight:800;
+
+  background:#e8f4f2;
+
+  color:#17656b;
+}
+
+.badge.paid{
+  background:#fff0d9;
+
+  color:#9a5a00;
+}
+
+.btn{
+  margin-top:14px;
+
+  border:0;
+
+  border-radius:10px;
+
+  padding:10px 13px;
+
+  background:#123f46;
+
+  color:#fff;
+
+  font-weight:700;
+
+  cursor:pointer;
+}
+
+.details{
+  display:none;
+
+  margin-top:14px;
+
+  border-top:1px solid #edf1f2;
+
+  padding-top:12px;
+}
+
+.details div{
+  font-size:12px;
+
+  padding:5px 0;
+
+  color:#536d72;
+}
+
+.empty{
+  background:#fff;
+
+  border-radius:16px;
+
+  padding:24px;
+
+  text-align:center;
+
+  color:#718096;
+}
+
+.back{
+  display:inline-block;
+
+  margin-top:16px;
+
+  text-decoration:none;
+
+  color:#123f46;
+
+  font-size:13px;
+
+  font-weight:700;
+}
+
+@media(max-width:700px){
+
+  .grid{
+    grid-template-columns:1fr;
+  }
+
+  .hero h1{
+    font-size:23px;
+  }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+<div class="wrap">
+
+
+  <section class="hero">
+
+    <h1>
+      🛍️ Test Packages
+    </h1>
+
+    <p>
+      Choose a package and explore
+      the tests included in it.
+    </p>
+
+  </section>
+
+
+  <div class="toolbar">
+
+    <input
+      id="search"
+      placeholder="Search packages...">
+
+  </div>
+
+
+  <div
+    id="packageGrid"
+    class="grid">
+  </div>
+
+
+  <a
+    class="back"
+    href="index.html">
+
+    ← Back to Website
+
+  </a>
+
+</div>
+
+
+<script>
+
+
+  
+function esc(v){
+
+  return String(v ?? "")
+
+    .replace(/&/g,"&amp;")
+
+    .replace(/</g,"&lt;")
+
+    .replace(/>/g,"&gt;")
+
+    .replace(/"/g,"&quot;")
+
+    .replace(/'/g,"&#39;");
+
+}
+
+
+function getPackages(){
+
+  try{
+
+    return JSON.parse(
+      localStorage.getItem(
+        "bq_packages"
+      ) || "[]"
+    );
+
+  }catch(e){
+
+    return [];
+
+  }
+
+}
+
+
+function getTests(){
+
+  try{
+
+    return JSON.parse(
+      localStorage.getItem(
+        "bq_tests"
+      ) || "[]"
+    );
+
+  }catch(e){
+
+    return [];
+
+  }
+
+}
+
+
+function toggleDetails(id){
+
+  const e =
+    document.getElementById(
+      "d_" + id
+    );
+
+
+  if(!e) return;
+
+
+  e.style.display =
+    e.style.display === "block"
+      ? "none"
+      : "block";
+
+}
+
+
+function render(){
+
+  const q =
+    document.getElementById(
+      "search"
+    )
+    .value
+    .toLowerCase()
+    .trim();
+
+
+  const tests =
+    getTests();
+
+
+  const list =
+    getPackages()
+      .filter(function(p){
+
+        return (
+
+          p.published !== false &&
+
+          `${p.name || ""} ` +
+          `${p.description || ""}`
+
+        )
+        .toLowerCase()
+        .includes(q);
+
+      });
+
+
+  const box =
+    document.getElementById(
+      "packageGrid"
+    );
+
+
+  if(!list.length){
+
+    box.className = "";
+
+    box.innerHTML =
+      '<div class="empty">' +
+      'No packages available right now.' +
+      '</div>';
+
+    return;
+
+  }
+
+
+  box.className =
+    "grid";
+
+
+  box.innerHTML =
+    list.map(function(p){
+
+      const ids =
+        p.testIds || [];
+
+
+      const names =
+        ids
+
+          .map(function(id){
+
+            return tests.find(
+              t => t.id === id
+            );
+
+          })
+
+          .filter(Boolean)
+
+          .map(function(t){
+
+            return (
+              t.name ||
+              "Untitled Test"
+            );
+
+          });
+
+
+      return `
+
+        <article class="card">
+
+
+          <span
+            class="badge
+            ${p.access === "PAID"
+              ? "paid"
+              : ""}">
+
+            ${
+              p.access === "PAID"
+                ? "PAID"
+                : "FREE"
+            }
+
+          </span>
+
+
+          <h2
+            style="margin-top:10px">
+
+            ${esc(p.name)}
+
+          </h2>
+
+
+          <div class="desc">
+
+            ${esc(
+              p.description ||
+              "Explore the tests included in this package."
+            )}
+
+          </div>
+
+
+          <div class="meta">
+
+            📚 ${ids.length} Test(s)
+
+            &nbsp;•&nbsp;
+
+            ${
+              p.attempts === "unlimited"
+                ? "Unlimited attempts"
+                : esc(p.attempts) +
+                  " attempt(s)"
+            }
+
+          </div>
+
+
+          <div class="price">
+
+            ${
+              p.access === "PAID"
+                ? "₹" +
+                  Number(p.price || 0)
+                : "Free"
+            }
+
+          </div>
+
+
+          <button
+            class="btn"
+            onclick="
+              toggleDetails(
+                '${esc(p.id)}'
+              )
+            ">
+
+            View Included Tests
+
+          </button>
+
+
+          <div
+            id="d_${esc(p.id)}"
+            class="details">
+
+            ${
+              names.length
+
+              ? ids.map(function(id, i) {
+    const test = tests.find(
+      t => String(t.id) === String(id)
+    );
+
+    if (!test) return "";
+
+    return `
+      <div>
+        ${i + 1}. ${esc(test.name || "Untitled Test")}
+        <br>
+        <a
+          href="student-test.html?id=${encodeURIComponent(test.id)}&packageId=${encodeURIComponent(p.id)}"
+          style="display:inline-block;margin-top:5px;color:#17656b;font-weight:700;text-decoration:none;">
+          Open Test →
+        </a>
+      </div>
+    `;
+  }).join("")
+              : `
+                <div>
+                  No test details available.
+                </div>
+              `
+            }
+
+          </div>
+
+
+        </article>
+
+      `;
+
+    })
+    .join("");
+
+}
+
+
+document
+  .getElementById("search")
+  .addEventListener(
+    "input",
+    render
+  );
+
+
+render();
+
+</script>
+
+</body>
+
+</html>

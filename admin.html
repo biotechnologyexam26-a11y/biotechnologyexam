@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Admin Login | Biotechnology Questions</title>
+
+  <style>
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      min-height: 100vh;
+      color: #163e52;
+
+      background:
+        radial-gradient(
+          circle at 15% 20%,
+          rgba(43, 210, 188, 0.18),
+          transparent 28%
+        ),
+        radial-gradient(
+          circle at 85% 80%,
+          rgba(35, 132, 176, 0.16),
+          transparent 30%
+        ),
+        linear-gradient(
+          135deg,
+          #eef9f7,
+          #f7fbfc
+        );
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      overflow: hidden;
+      position: relative;
+    }
+
+
+    /* =========================
+       BACKGROUND DECORATION
+    ========================= */
+
+    .bg-circle {
+      position: absolute;
+      border: 1px solid rgba(8, 141, 128, 0.10);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .circle-one {
+      width: 430px;
+      height: 430px;
+      top: -190px;
+      right: -130px;
+    }
+
+    .circle-two {
+      width: 300px;
+      height: 300px;
+      bottom: -150px;
+      left: -100px;
+    }
+
+    .circle-three {
+      width: 180px;
+      height: 180px;
+      top: 15%;
+      left: 8%;
+      border-color: rgba(35, 132, 176, 0.08);
+    }
+
+
+    /* =========================
+       LOGIN WRAPPER
+    ========================= */
+
+    .login-wrapper {
+      width: 92%;
+      max-width: 920px;
+
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+
+      background: rgba(255,255,255,0.82);
+
+      border: 1px solid rgba(255,255,255,0.9);
+
+      border-radius: 30px;
+
+      overflow: hidden;
+
+      box-shadow:
+        0 25px 70px rgba(24, 74, 88, 0.13);
+
+      backdrop-filter: blur(18px);
+
+      position: relative;
+      z-index: 2;
+    }
+
+    /* =========================
+       LEFT BRAND PANEL
+    ========================= */
+
+    .brand-panel {
+      padding: 45px 38px;
+
+      color: white;
+
+      background:
+        radial-gradient(
+          circle at 80% 20%,
+          rgba(61, 235, 211, 0.22),
+          transparent 30%
+        ),
+        linear-gradient(
+          145deg,
+          #063449,
+          #075764,
+          #087d77
+        );
+
+      position: relative;
+      overflow: hidden;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .brand-panel::before {
+      content: "🧬";
+
+      position: absolute;
+
+      font-size: 170px;
+
+      right: -45px;
+      bottom: -35px;
+
+      opacity: 0.08;
+
+      transform: rotate(12deg);
+    }
+
+    .brand-panel::after {
+      content: "";
+
+      position: absolute;
+
+      width: 240px;
+      height: 240px;
+
+      border: 1px solid rgba(255,255,255,0.10);
+
+      border-radius: 50%;
+
+      right: -100px;
+      top: -80px;
+    }
+
+    .brand-logo {
+      width: 62px;
+      height: 62px;
+
+      border-radius: 18px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      background: rgba(255,255,255,0.12);
+
+      border: 1px solid rgba(255,255,255,0.18);
+
+      font-size: 20px;
+      font-weight: 900;
+
+      backdrop-filter: blur(10px);
+
+      margin-bottom: 25px;
+    }
+
+    .brand-panel h1 {
+      font-size: 28px;
+      line-height: 1.15;
+
+      margin-bottom: 13px;
+    }
+
+    .brand-panel > div:first-child p {
+      color: #c4e0e3;
+
+      font-size: 13px;
+
+      line-height: 1.8;
+
+      max-width: 310px;
+    }
+
+    .admin-features {
+      margin-top: 35px;
+
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+
+      position: relative;
+      z-index: 3;
+    }
+
+    .feature {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
+      color: #d7eeee;
+
+      font-size: 12px;
+    }
+
+    .feature-icon {
+      width: 29px;
+      height: 29px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      border-radius: 9px;
+
+      background: rgba(255,255,255,0.10);
+
+      font-size: 13px;
+    }
+
+    .brand-footer {
+      color: #a9ced1;
+
+      font-size: 10px;
+
+      margin-top: 35px;
+
+      position: relative;
+      z-index: 3;
+    }
+
+    /* =========================
+       LOGIN PANEL
+    ========================= */
+
+    .login-panel {
+      padding: 50px 48px;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      background: rgba(255,255,255,0.92);
+    }
+
+    .login-label {
+      color: #078d80;
+
+      font-size: 10px;
+
+      font-weight: 900;
+
+      letter-spacing: 1.8px;
+
+      margin-bottom: 8px;
+    }
+
+    .login-panel h2 {
+      color: #123d55;
+
+      font-size: 31px;
+
+      margin-bottom: 8px;
+    }
+
+    .login-subtitle {
+      color: #7c8e96;
+
+      font-size: 13px;
+
+      line-height: 1.6;
+
+      margin-bottom: 30px;
+    }
+
+
+    /* =========================
+       FORM
+    ========================= */
+
+    .form-group {
+      margin-bottom: 18px;
+    }
+
+    .form-group label {
+      display: block;
+
+      color: #345666;
+
+      font-size: 12px;
+
+      font-weight: 700;
+
+      margin-bottom: 8px;
+    }
+
+    .password-wrapper {
+      position: relative;
+    }
+
+    .password-wrapper input {
+      width: 100%;
+
+      padding: 14px 45px 14px 15px;
+
+      border-radius: 13px;
+
+      border: 1px solid #d7e5e7;
+
+      outline: none;
+
+      background: #f8fbfb;
+
+      color: #173f54;
+
+      font-size: 13px;
+
+      transition: 0.25s;
+    }
+
+    .password-wrapper input:focus {
+      border-color: #0a9b8d;
+
+      background: white;
+
+      box-shadow:
+        0 0 0 4px rgba(10,155,141,0.08);
+    }
+
+    .show-password {
+      position: absolute;
+
+      right: 13px;
+      top: 50%;
+
+      transform: translateY(-50%);
+
+      border: none;
+      background: none;
+
+      cursor: pointer;
+
+      font-size: 15px;
+
+      opacity: 0.65;
+    }
+
+    .login-btn {
+      width: 100%;
+
+      padding: 14px;
+
+      border: none;
+
+      border-radius: 13px;
+
+      background:
+        linear-gradient(
+          135deg,
+          #0db69f,
+          #078b83
+        );
+
+      color: white;
+
+      font-size: 13px;
+
+      font-weight: 800;
+
+      cursor: pointer;
+
+      box-shadow:
+        0 12px 25px rgba(0,130,115,0.18);
+
+      transition: 0.25s;
+    }
+
+    .login-btn:hover {
+      transform: translateY(-2px);
+
+      box-shadow:
+        0 15px 30px rgba(0,130,115,0.25);
+    }
+
+    .login-message {
+      min-height: 20px;
+
+      text-align: center;
+
+      margin-top: 12px;
+
+      font-size: 12px;
+
+      font-weight: 700;
+    }
+
+    .login-message.error {
+      color: #d45c5c;
+    }
+
+    .login-message.success {
+      color: #078d80;
+    }
+
+    .back-home {
+      display: block;
+
+      width: 100%;
+
+      margin-top: 18px;
+
+      padding: 12px;
+
+      border-radius: 12px;
+
+      border: 1px solid #dce8e9;
+
+      background: #f6f9f9;
+
+      color: #52707b;
+
+      font-size: 12px;
+
+      font-weight: 700;
+
+      cursor: pointer;
+
+      text-align: center;
+    }
+
+    .back-home:hover {
+      background: #edf7f5;
+      color: #078d80;
+    }
+
+
+    /* =========================
+       MOBILE
+    ========================= */
+
+    @media (max-width: 720px) {
+
+      body {
+        padding: 20px 0;
+        overflow-y: auto;
+      }
+
+      .login-wrapper {
+        grid-template-columns: 1fr;
+
+        max-width: 470px;
+
+        border-radius: 25px;
+      }
+
+      .brand-panel {
+        padding: 30px 27px;
+
+        min-height: 245px;
+      }
+
+      .brand-panel h1 {
+        font-size: 24px;
+      }
+
+      .admin-features {
+        display: none;
+      }
+
+      .brand-footer {
+        margin-top: 25px;
+      }
+
+      .login-panel {
+        padding: 35px 27px;
+      }
+
+      .login-panel h2 {
+        font-size: 27px;
+      }
+
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+
+  <div class="bg-circle circle-one"></div>
+  <div class="bg-circle circle-two"></div>
+  <div class="bg-circle circle-three"></div>
+
+
+  <main class="login-wrapper">
+
+
+    <!-- =========================
+         BRAND SIDE
+    ========================== -->
+
+    <section class="brand-panel">
+
+      <div>
+
+        <div class="brand-logo">
+          BQ
+        </div>
+
+        <h1>
+          Biotechnology<br>
+          Questions
+        </h1>
+
+        <p>
+          Your central control panel for
+          managing tests, questions, PYQs
+          and learning content.
+        </p>
+
+
+        <div class="admin-features">
+
+          <div class="feature">
+            <span class="feature-icon">📝</span>
+            Manage Tests
+          </div>
+
+          <div class="feature">
+            <span class="feature-icon">❓</span>
+            Manage Questions
+          </div>
+
+          <div class="feature">
+            <span class="feature-icon">📦</span>
+            Manage Packages
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="brand-footer">
+        Admin Control Panel • 2026
+      </div>
+
+    </section>
+
+    <!-- =========================
+         LOGIN SIDE
+    ========================== -->
+
+    <section class="login-panel">
+
+      <span class="login-label">
+        ADMIN ACCESS
+      </span>
+
+      <h2>
+        Welcome back 👋
+      </h2>
+
+      <p class="login-subtitle">
+        Sign in to manage your Biotechnology
+        Questions platform.
+      </p>
+
+
+      <form id="adminLoginForm">
+
+
+        <div class="form-group">
+
+          <label for="adminPassword">
+            Admin Password
+          </label>
+
+          <div class="password-wrapper">
+
+            <input
+              type="password"
+              id="adminPassword"
+              placeholder="Enter your password"
+              autocomplete="current-password"
+              required
+            >
+
+            <button
+              type="button"
+              class="show-password"
+              onclick="togglePassword()"
+              aria-label="Show password"
+            >
+              👁️
+            </button>
+
+          </div>
+
+        </div>
+
+
+        <button
+          type="submit"
+          class="login-btn"
+        >
+          🔐 Login to Admin Panel
+        </button>
+
+
+        <p
+          id="loginMessage"
+          class="login-message"
+        ></p>
+
+
+      </form>
+
+
+      <button
+        class="back-home"
+        onclick="window.location.href='index.html'"
+      >
+        ← Back to Website
+      </button>
+
+    </section>
+
+
+  </main>
+
+  <script>
+
+  function togglePassword() {
+
+    const input =
+      document.getElementById("adminPassword");
+
+    const button =
+      document.querySelector(".show-password");
+
+    if (input.type === "password") {
+
+      input.type = "text";
+      button.textContent = "🙈";
+
+    } else {
+
+      input.type = "password";
+      button.textContent = "👁️";
+
+    }
+
+  }
+
+
+  /* =========================
+     SHARED ADMIN PASSWORD
+  ========================= */
+
+  const SHARED_ADMIN_PASSWORD =
+  localStorage.getItem("bq_admin_password")
+  || "BQAdmin@2026";
+
+
+  /* =========================
+     ADMIN LOGIN
+  ========================= */
+
+  document
+    .getElementById("adminLoginForm")
+    .addEventListener(
+      "submit",
+      function(event) {
+
+        event.preventDefault();
+
+        const password =
+          document.getElementById(
+            "adminPassword"
+          ).value;
+
+        const message =
+          document.getElementById(
+            "loginMessage"
+          );
+
+
+        if (
+          password ===
+          SHARED_ADMIN_PASSWORD
+        ) {
+
+          sessionStorage.setItem(
+            "bq_admin_logged_in",
+            "true"
+          );
+
+          message.textContent =
+            "✓ Login successful...";
+
+          message.className =
+            "login-message success";
+
+
+          setTimeout(
+            function() {
+
+              window.location.href =
+                "admin-dashboard.html";
+
+            },
+            400
+          );
+
+
+        } else {
+
+          message.textContent =
+            "❌ Incorrect password. Try again.";
+
+          message.className =
+            "login-message error";
+
+        }
+
+      }
+    );
+
+  </script>
+</body>
+</html>

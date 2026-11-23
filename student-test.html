@@ -1,0 +1,3380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#102b46">
+<title>Biotechnology Questions | Student Test</title>
+
+<style>
+:root {
+  --navy: #102b46;
+  --blue: #2463eb;
+  --green: #16845b;
+  --red: #c83d4d;
+  --amber: #b77916;
+  --text: #19283b;
+  --muted: #6b7b90;
+  --border: #e1e8f0;
+  --background: #f3f6fb;
+  --white: #ffffff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--background);
+  color: var(--text);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 15px;
+  line-height: 1.55;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid #9bbaff;
+  outline-offset: 2px;
+}
+
+.topbar {
+  background: var(--navy);
+  color: var(--white);
+  padding: 14px 18px;
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  box-shadow: 0 2px 10px #102b4620;
+}
+
+.topbar-inner {
+  max-width: 1050px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.brand {
+  min-width: 0;
+}
+
+.brand-title {
+  font-size: 17px;
+  font-weight: 800;
+  margin: 0;
+}
+
+.brand-subtitle {
+  font-size: 12px;
+  color: #cbd8e8;
+  margin-top: 2px;
+}
+
+.page {
+  max-width: 900px;
+  margin: 24px auto;
+  padding: 0 14px 40px;
+}
+
+.card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 15px;
+  padding: 22px;
+  box-shadow: 0 5px 20px #102b4608;
+}
+
+.card + .card {
+  margin-top: 16px;
+}
+
+.page-title {
+  font-size: 23px;
+  line-height: 1.3;
+  margin: 0 0 8px;
+  color: var(--navy);
+  overflow-wrap: anywhere;
+}
+
+.muted {
+  color: var(--muted);
+}
+
+.small {
+  font-size: 13px;
+}
+
+.btn {
+  border: 0;
+  border-radius: 9px;
+  padding: 11px 16px;
+  font-weight: 700;
+  transition: opacity 0.15s;
+}
+
+.btn:active {
+  opacity: 0.8;
+}
+
+.btn-primary {
+  background: var(--blue);
+  color: white;
+}
+
+.btn-secondary {
+  background: #eaf0f8;
+  color: var(--navy);
+}
+
+.btn-success {
+  background: var(--green);
+  color: white;
+}
+
+.btn-danger {
+  background: var(--red);
+  color: white;
+}
+
+.btn-outline {
+  background: white;
+  border: 1px solid var(--border);
+  color: var(--text);
+}
+
+.full-button {
+  width: 100%;
+}
+
+.meta-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.meta-item {
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  min-width: 0;
+}
+
+.meta-label {
+  display: block;
+  color: var(--muted);
+  font-size: 12px;
+  margin-bottom: 3px;
+}
+
+.meta-value {
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+
+.test-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.test-toolbar h2 {
+  font-size: 18px;
+  margin: 0;
+}
+
+.timer {
+  border-radius: 9px;
+  padding: 8px 12px;
+  background: #edf3ff;
+  color: var(--navy);
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+}
+
+.timer.warning {
+  background: #fff0e9;
+  color: #b93826;
+}
+
+.progress-track {
+  width: 100%;
+  height: 7px;
+  background: #e8edf5;
+  border-radius: 99px;
+  overflow: hidden;
+  margin: 14px 0 18px;
+}
+
+.progress-fill {
+  height: 100%;
+  width: 0;
+  background: var(--blue);
+  border-radius: inherit;
+  transition: width 0.2s;
+}
+
+.question-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 15px;
+}
+
+.question-number {
+  color: var(--navy);
+  font-weight: 800;
+  font-size: 16px;
+}
+
+.question-marks {
+  font-size: 11px;
+  color: var(--muted);
+  background: transparent;
+  padding: 4px 0 0;
+  margin-top: 6px;
+  text-align: right;
+}
+
+.section-name {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--blue);
+  margin-bottom: 8px;
+}
+
+.question-text {
+  font-size: 17px;
+  line-height: 1.7;
+  overflow-wrap: anywhere;
+  margin: 0 0 20px;
+}
+
+.question-text img,
+.option-label img,
+.explanation img {
+  max-width: 100%;
+  height: auto;
+}
+
+.question-options {
+  display: grid;
+  gap: 11px;
+}
+
+.option-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 11px;
+  padding: 13px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: white;
+  cursor: pointer;
+  overflow-wrap: anywhere;
+}
+
+.option-row:has(input:checked) {
+  border-color: var(--blue);
+  background: #f0f5ff;
+}
+
+.option-row input {
+  margin-top: 5px;
+  accent-color: var(--blue);
+  flex-shrink: 0;
+}
+
+.option-label {
+  flex: 1;
+  min-width: 0;
+}
+
+.answer-input {
+  width: 100%;
+  padding: 13px;
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  background: white;
+  color: var(--text);
+}
+
+.answer-input:focus {
+  border-color: var(--blue);
+}
+
+.practice-feedback {
+  margin-top: 18px;
+  border-radius: 10px;
+  padding: 14px;
+  overflow-wrap: anywhere;
+}
+
+.feedback-correct {
+  background: #e8f7ef;
+  border: 1px solid #a6dfc0;
+  color: #11633e;
+}
+
+.feedback-incorrect {
+  background: #fff0f0;
+  border: 1px solid #efb9bf;
+  color: #9e2938;
+}
+
+.feedback-neutral {
+  background: #edf3ff;
+  border: 1px solid #c6d8ff;
+  color: var(--navy);
+}
+
+.explanation {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid #00000012;
+}
+
+.question-navigation {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin-top: 22px;
+}
+
+.question-navigation .spacer {
+  flex: 1;
+}
+
+.result-score {
+  font-size: 34px;
+  font-weight: 800;
+  color: var(--navy);
+  margin: 8px 0;
+  overflow-wrap: anywhere;
+}
+
+.result-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin: 18px 0;
+}
+
+.result-item {
+  padding: 14px;
+  background: #f7f9fc;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+
+.result-item strong {
+  display: block;
+  font-size: 20px;
+}
+
+.review-item {
+  border: 1px solid var(--border);
+  border-radius: 11px;
+  padding: 16px;
+  margin-top: 12px;
+  overflow-wrap: anywhere;
+}
+
+.review-item h3 {
+  font-size: 15px;
+  margin: 0 0 10px;
+}
+
+.review-line {
+  margin-top: 7px;
+}
+
+.palette-toggle {
+  min-width: 42px;
+}
+
+.palette-overlay {
+  position: fixed;
+  inset: 0;
+  background: #09182b80;
+  z-index: 40;
+}
+
+.palette-panel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: min(390px, 92vw);
+  background: white;
+  z-index: 41;
+  display: flex;
+  flex-direction: column;
+  box-shadow: -8px 0 30px #00000018;
+}
+
+.palette-header {
+  padding: 17px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  border-bottom: 1px solid var(--border);
+}
+
+.palette-header h2 {
+  font-size: 18px;
+  margin: 0;
+}
+
+.palette-content {
+  padding: 16px;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.palette-legend {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  font-size: 12px;
+  margin-bottom: 20px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.status-dot {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 12px;
+  height: 12px;
+  flex: 0 0 12px;
+  border-radius: 4px;
+  border: 1px solid #cbd4e0;
+  background: #edf1f6;
+}
+
+.status-not-visited {
+  background: #edf1f6;
+  border-color: #cbd4e0;
+}
+
+.status-unanswered {
+  background: #fff0d2;
+  border-color: #e4b85f;
+}
+
+.status-answered {
+  background: #16845b;
+  border-color: #16845b;
+}
+
+.status-marked {
+  background: #8254c7;
+  border-color: #8254c7;
+}
+
+.palette-section {
+  margin-bottom: 20px;
+}
+
+.palette-section-title {
+  font-weight: 800;
+  font-size: 14px;
+  margin-bottom: 10px;
+  overflow-wrap: anywhere;
+}
+
+.palette-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 9px;
+}
+
+.palette-question {
+  min-width: 0;
+  aspect-ratio: 1;
+  border-radius: 8px;
+  border: 1px solid #cbd4e0;
+  background: #edf1f6;
+  color: var(--text);
+  font-weight: 700;
+  padding: 4px;
+}
+
+.palette-question.status-unanswered {
+  background: #fff0d2;
+  border-color: #e4b85f;
+}
+
+.palette-question.status-answered {
+  background: #16845b;
+  border-color: #16845b;
+  color: white;
+}
+
+.palette-question.status-marked {
+  background: #8254c7;
+  border-color: #8254c7;
+  color: white;
+}
+
+.palette-question.current {
+  outline: 3px solid var(--blue);
+  outline-offset: 2px;
+}
+
+.palette-question:focus-visible {
+  outline: 3px solid var(--blue);
+  outline-offset: 2px;
+}
+
+.palette-section + .palette-section {
+  border-top: 1px solid var(--border);
+  padding-top: 16px;
+}
+
+.empty-message {
+  padding: 14px;
+  border-radius: 9px;
+  background: #f7f9fc;
+  color: var(--muted);
+}
+
+.error-message {
+  padding: 14px;
+  border-radius: 9px;
+  background: #fff0f0;
+  border: 1px solid #efb9bf;
+  color: #9e2938;
+  overflow-wrap: anywhere;
+}
+
+.section-result {
+  padding: 13px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.section-result:last-child {
+  border-bottom: 0;
+}
+
+@media (max-width: 520px) {
+  .topbar {
+    padding: 12px;
+  }
+
+  .brand-title {
+    font-size: 15px;
+  }
+
+  .page {
+    margin: 16px auto;
+    padding: 0 10px 28px;
+  }
+
+  .card {
+    padding: 16px;
+    border-radius: 12px;
+  }
+
+  .page-title {
+    font-size: 21px;
+  }
+
+  .meta-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+
+  .meta-item {
+    padding: 10px;
+  }
+
+  .question-text {
+    font-size: 16px;
+  }
+
+  .question-navigation .spacer {
+    display: none;
+  }
+
+  .question-navigation .btn {
+    flex: 1 1 auto;
+  }
+
+  .result-score {
+    font-size: 29px;
+  }
+}
+  /* PART 4: Student question palette */
+.student-palette-group {
+  margin: 12px 0 18px;
+}
+
+.student-palette-group-title {
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: var(--text);
+}
+
+.student-palette-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.student-palette-question {
+  min-height: 38px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  background: var(--card);
+  color: var(--text);
+}
+
+.student-palette-question.status-not-visited {
+  background: var(--card);
+}
+
+.student-palette-question.status-unanswered {
+  background: #fff0d5;
+  border-color: #e5a33b;
+  color: #754600;
+}
+
+.student-palette-question.status-answered {
+  background: #d9f5e3;
+  border-color: #48a66b;
+  color: #145b30;
+}
+
+.student-palette-question.status-marked {
+  background: #eadfff;
+  border-color: #9870dc;
+  color: #512b91;
+}
+
+.student-palette-question.current-question {
+  outline: 2px solid var(--text);
+  outline-offset: 2px;
+}
+
+.student-palette-question:focus-visible {
+  outline: 2px solid var(--text);
+  outline-offset: 2px;
+}
+  .timer-warning {
+  color: #b42318 !important;
+  border-color: #b42318 !important;
+  animation: studentTimerPulse 1s ease-in-out infinite alternate;
+}
+
+@keyframes studentTimerPulse {
+  from { opacity: 1; }
+  to { opacity: 0.65; }
+}
+
+.practice-feedback {
+  margin-top: 14px;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.practice-feedback p {
+  margin: 8px 0 0;
+}
+
+.practice-feedback.correct {
+  background: #e5f7eb;
+  border: 1px solid #48a66b;
+  color: #145b30;
+}
+
+.practice-feedback.incorrect {
+  background: #fff0f0;
+  border: 1px solid #d96a6a;
+  color: #8a2020;
+}
+  #checkMSQBtn {
+  display: inline-block;
+  width: auto;
+  margin-top: 10px;
+  padding: 7px 14px;
+  border: 1px solid #176b45;
+  border-radius: 6px;
+  background: #176b45;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+#checkMSQBtn:disabled {
+  background: #176b45;
+  border-color: #176b45;
+  color: #ffffff;
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+#checkMSQBtn[hidden] {
+  display: none !important;
+}
+  /* RESULT SCREEN DESIGN - COLORFUL */
+
+#resultView {
+  padding: 18px;
+  background: linear-gradient(180deg, #eef2ff 0%, var(--bg) 360px);
+}
+
+#resultView > .small {
+  color: #4f46e5;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+#resultView > .page-title {
+  margin: 5px 0 20px;
+  color: #172554;
+  font-size: 28px;
+  font-weight: 850;
+}
+
+#resultSummary {
+  position: relative;
+  overflow: hidden;
+  padding: 22px 18px;
+  margin-bottom: 18px;
+  border: none;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #312e81 0%, #4f46e5 55%, #7c3aed 100%);
+  color: #ffffff;
+  box-shadow: 0 10px 25px rgba(79, 70, 229, 0.22);
+}
+
+#resultSummary h2 {
+  margin: 0 0 15px;
+  color: #e0e7ff;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+#resultSummary p:first-of-type {
+  margin: 8px 0 20px;
+  color: #ffffff;
+  font-size: 27px;
+  font-weight: 850;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+#resultSummary p:not(:first-of-type) {
+  display: inline-block;
+  vertical-align: top;
+  width: calc(50% - 7px);
+  box-sizing: border-box;
+  min-height: 64px;
+  padding: 13px 10px;
+  margin: 4px 3px 4px 0;
+  border: 1px solid rgba(255,255,255,.23);
+  border-radius: 12px;
+  background: rgba(255,255,255,.12);
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+#sectionResults,
+#answerReview {
+  padding: 17px;
+  margin-top: 18px;
+  border: 1px solid #e0e7ff;
+  border-radius: 17px;
+  background: var(--card);
+  box-shadow: 0 5px 18px rgba(30, 41, 59, .05);
+}
+
+#sectionResults h3,
+#answerReview h3 {
+  margin: 0 0 16px;
+  color: #3730a3;
+  font-size: 18px;
+  font-weight: 800;
+}
+
+#sectionResults p {
+  padding: 13px;
+  margin: 10px 0;
+  border: 1px solid #dbeafe;
+  border-left: 4px solid #6366f1;
+  border-radius: 10px;
+  background: #f5f7ff;
+  color: #27345b;
+  font-size: 13px;
+  line-height: 1.7;
+  overflow-wrap: anywhere;
+}
+
+.answer-review-item {
+  padding: 14px;
+  margin: 12px 0;
+  border: 1px solid #e0e7ff;
+  border-radius: 13px;
+  background: #f8faff;
+  overflow-wrap: anywhere;
+}
+
+.answer-review-item p {
+  margin: 8px 0;
+  color: #334155;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.answer-review-item p:first-child {
+  color: #312e81;
+  font-size: 14px;
+  font-weight: 800;
+}
+
+#reattemptBtn {
+  min-height: 48px;
+  margin-top: 20px;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(100deg, #4f46e5, #7c3aed);
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 800;
+  box-shadow: 0 6px 15px rgba(79, 70, 229, .2);
+}
+
+#reattemptBtn:active {
+  transform: scale(.98);
+}
+
+@media (max-width: 380px) {
+  #resultView {
+    padding: 13px;
+  }
+
+  #resultSummary {
+    padding: 18px 13px;
+  }
+
+  #resultSummary p:first-of-type {
+    font-size: 23px;
+  }
+
+  #resultSummary p:not(:first-of-type) {
+    width: calc(50% - 5px);
+    padding: 11px 7px;
+    font-size: 12px;
+  }
+
+  #sectionResults,
+  #answerReview {
+    padding: 13px;
+  }
+}
+  /* PREMIUM RESULT DASHBOARD */
+
+#resultSummary {
+  padding: 0;
+  overflow: hidden;
+  border: none;
+  background: transparent;
+  box-shadow: none;
+}
+
+#resultSummary .result-hero {
+  padding: 24px 20px;
+  border-radius: 22px;
+  color: #fff;
+  background: linear-gradient(135deg, #172554, #4338ca 60%, #7c3aed);
+  box-shadow: 0 12px 28px rgba(67, 56, 202, .22);
+}
+
+#resultSummary .result-eyebrow {
+  margin: 0 0 12px;
+  color: #c7d2fe;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+#resultSummary .result-hero h2 {
+  margin: 0 0 18px;
+  color: #fff;
+  font-size: 19px;
+}
+
+#resultSummary .result-score {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 5px;
+}
+
+#resultSummary .result-score > span:first-child {
+  font-size: 38px;
+  font-weight: 850;
+  line-height: 1.2;
+}
+
+#resultSummary .result-score-total {
+  color: #ddd6fe;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+#resultSummary .result-percentage {
+  margin: 10px 0 15px;
+  color: #d1fae5;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+#resultSummary .result-progress {
+  height: 9px;
+  overflow: hidden;
+  border-radius: 20px;
+  background: rgba(255,255,255,.2);
+}
+
+#resultSummary .result-progress-fill {
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #6ee7b7, #34d399);
+  transition: width .5s ease;
+}
+
+#resultSummary .result-stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 9px;
+  margin-top: 13px;
+}
+
+#resultSummary .result-stat-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 6px;
+  min-width: 0;
+  padding: 14px 8px;
+  border: 1px solid transparent;
+  border-radius: 14px;
+}
+
+#resultSummary .result-stat-card strong {
+  font-size: 25px;
+  line-height: 1.2;
+}
+
+#resultSummary .result-stat-card span {
+  font-size: 11px;
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+
+#resultSummary .stat-correct {
+  color: #166534;
+  background: #dcfce7;
+  border-color: #bbf7d0;
+}
+
+#resultSummary .stat-incorrect {
+  color: #991b1b;
+  background: #fee2e2;
+  border-color: #fecaca;
+}
+
+#resultSummary .stat-unanswered {
+  color: #1e40af;
+  background: #dbeafe;
+  border-color: #bfdbfe;
+}
+
+@media (max-width: 380px) {
+  #resultSummary .result-hero {
+    padding: 20px 15px;
+  }
+
+  #resultSummary .result-score > span:first-child {
+    font-size: 32px;
+  }
+
+  #resultSummary .result-stats {
+    gap: 6px;
+  }
+
+  #resultSummary .result-stat-card {
+    padding: 12px 5px;
+  }
+
+  #resultSummary .result-stat-card strong {
+    font-size: 22px;
+  }
+
+  #resultSummary .result-stat-card span {
+    font-size: 10px;
+  }
+}
+  /* PREMIUM SCORE POLISH */
+
+#resultSummary .result-hero {
+  background: linear-gradient(135deg, #172554 0%, #3730a3 48%, #6d28d9 100%);
+  border: 1px solid rgba(255,255,255,.22);
+  box-shadow: 0 12px 30px rgba(55,48,163,.28);
+}
+
+#resultSummary .result-hero h2 {
+  color: #ffffff;
+  font-size: 20px;
+  letter-spacing: .3px;
+  margin-bottom: 20px;
+}
+
+#resultSummary .result-score {
+  align-items: baseline;
+  gap: 7px;
+  padding: 15px 14px;
+  border-radius: 14px;
+  background: rgba(255,255,255,.12);
+  border: 1px solid rgba(255,255,255,.2);
+}
+
+#resultSummary .result-score > span:first-child {
+  color: #ffffff;
+  font-size: 44px;
+  font-weight: 900;
+  letter-spacing: -1px;
+  text-shadow: 0 2px 12px rgba(0,0,0,.22);
+}
+
+#resultSummary .result-score-total {
+  color: #f3e8ff;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+#resultSummary .result-percentage {
+  display: inline-block;
+  margin: 14px 0;
+  padding: 7px 12px;
+  border-radius: 30px;
+  background: #d1fae5;
+  color: #065f46;
+  font-size: 13px;
+  font-weight: 900;
+}
+
+#resultSummary .result-progress {
+  height: 10px;
+  background: rgba(255,255,255,.24);
+  border: 1px solid rgba(255,255,255,.16);
+}
+
+#resultSummary .result-progress-fill {
+  background: linear-gradient(90deg, #6ee7b7, #34d399);
+  box-shadow: 0 0 10px rgba(110,231,183,.45);
+}
+
+#resultSummary .result-stat-card {
+  box-shadow: 0 4px 12px rgba(15,23,42,.06);
+  border-width: 1px;
+}
+
+#resultSummary .result-stat-card strong {
+  font-size: 27px;
+  font-weight: 900;
+}
+
+#resultSummary .stat-correct strong {
+  color: #15803d;
+}
+
+#resultSummary .stat-incorrect strong {
+  color: #b91c1c;
+}
+
+#resultSummary .stat-unanswered strong {
+  color: #1d4ed8;
+}
+
+@media (max-width: 380px) {
+  #resultSummary .result-score > span:first-child {
+    font-size: 39px;
+  }
+
+  #resultSummary .result-score-total {
+    font-size: 12px;
+  }
+}
+  /* RESULT SCREEN — FINAL VISUAL POLISH */
+
+/* Make the score panel more compact */
+#resultSummary .result-hero {
+  padding: 22px 18px;
+  border-radius: 22px;
+  background: linear-gradient(135deg, #20265f 0%, #3827a4 55%, #6426d4 100%);
+  box-shadow: 0 10px 24px rgba(56, 39, 164, 0.22);
+}
+
+#resultSummary .result-score {
+  padding: 14px 16px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.13);
+  border: 1px solid rgba(255, 255, 255, 0.23);
+}
+
+#resultSummary .result-score > span:first-child {
+  font-size: 42px;
+  color: #ffffff;
+  font-weight: 900;
+}
+
+#resultSummary .result-score-total {
+  color: #f1f5ff;
+  font-size: 14px;
+}
+
+/* Green percentage badge */
+#resultSummary .result-percentage {
+  padding: 10px 16px;
+  border: 1px solid #16a34a;
+  border-radius: 40px;
+  background: linear-gradient(135deg, #166534, #047857);
+  color: #ffffff;
+  font-size: 19px;
+  font-weight: 850;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.18);
+}
+
+/* Progress bar */
+#resultSummary .result-progress {
+  height: 9px;
+  margin-top: 4px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.23);
+}
+
+#resultSummary .result-progress-fill {
+  border-radius: 20px;
+  background: linear-gradient(90deg, #6ee7b7, #34d399);
+}
+
+/* Compact coloured statistics */
+#resultSummary .result-stats {
+  gap: 10px;
+  margin-top: 14px;
+}
+
+#resultSummary .result-stat-card {
+  min-height: 76px;
+  padding: 12px 10px;
+  border-radius: 20px;
+  box-shadow: 0 3px 9px rgba(15, 23, 42, 0.06);
+}
+
+#resultSummary .result-stat-card strong {
+  font-size: 26px;
+  font-weight: 900;
+}
+
+#resultSummary .result-stat-card span {
+  font-size: 12px;
+  font-weight: 650;
+}
+
+#resultSummary .stat-correct {
+  background: #d9fbe6;
+  border-color: #b1f2ca;
+  color: #166534;
+}
+
+#resultSummary .stat-incorrect {
+  background: #ffe2e2;
+  border-color: #ffc5c5;
+  color: #b91c1c;
+}
+
+#resultSummary .stat-unanswered {
+  background: #dceafe;
+  border-color: #bfd7ff;
+  color: #1d4ed8;
+}
+
+/* Section-wise result cards */
+#sectionResults {
+  padding: 18px;
+  border-radius: 22px;
+  background: var(--card);
+  border-color: #dce4f5;
+  box-shadow: 0 7px 22px rgba(30, 41, 59, 0.05);
+}
+
+#sectionResults h3 {
+  color: #3730a3;
+  font-size: 20px;
+  font-weight: 850;
+}
+
+#sectionResults p {
+  padding: 15px;
+  border: 1px solid #d9e5ff;
+  border-left: 5px solid #6366f1;
+  border-radius: 15px;
+  background: #f3f6ff;
+  color: #25345c;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+/* Answer review cards */
+#answerReview {
+  padding: 18px;
+  border-radius: 22px;
+  border-color: #dce4f5;
+}
+
+#answerReview h3 {
+  color: #3730a3;
+  font-size: 20px;
+  font-weight: 850;
+}
+
+.answer-review-item {
+  padding: 15px;
+  border-radius: 14px;
+  border-color: #dce5f5;
+  background: #f7f9ff;
+}
+
+.answer-review-item p {
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+/* Small mobile screens */
+@media (max-width: 380px) {
+  #resultSummary .result-hero {
+    padding: 19px 14px;
+  }
+
+  #resultSummary .result-score > span:first-child {
+    font-size: 36px;
+  }
+
+  #resultSummary .result-percentage {
+    font-size: 16px;
+  }
+
+  #resultSummary .result-stat-card {
+    padding: 11px 6px;
+  }
+
+  #resultSummary .result-stat-card strong {
+    font-size: 23px;
+  }
+
+  #resultSummary .result-stat-card span {
+    font-size: 11px;
+  }
+
+  #sectionResults,
+  #answerReview {
+    padding: 13px;
+  }
+
+  #sectionResults p {
+    padding: 12px;
+    font-size: 13px;
+  }
+}
+  /* SECTION RESULT — STRONG OVERRIDE */
+
+#resultView #sectionResults {
+  display: block !important;
+  padding: 18px !important;
+  margin-top: 22px !important;
+  border: 1px solid #dbe4ff !important;
+  border-radius: 22px !important;
+  background: #f1f5ff !important;
+  box-shadow: 0 8px 22px rgba(55, 48, 163, 0.08) !important;
+}
+
+#resultView #sectionResults h3 {
+  margin: 0 0 18px !important;
+  color: #3730a3 !important;
+  font-size: 20px !important;
+  font-weight: 850 !important;
+}
+
+#resultView #sectionResults p {
+  display: block !important;
+  box-sizing: border-box !important;
+  width: 100% !important;
+  padding: 16px !important;
+  margin: 12px 0 !important;
+  border: 1px solid #d7e3ff !important;
+  border-left: 5px solid #6366f1 !important;
+  border-radius: 15px !important;
+  background: #ffffff !important;
+  color: #26345b !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  line-height: 1.8 !important;
+  overflow-wrap: anywhere !important;
+  box-shadow: 0 3px 10px rgba(30, 41, 59, 0.04) !important;
+}
+
+#resultView #sectionResults p:last-child {
+  margin-bottom: 0 !important;
+}
+
+@media (max-width: 380px) {
+  #resultView #sectionResults {
+    padding: 13px !important;
+  }
+
+  #resultView #sectionResults p {
+    padding: 13px !important;
+    font-size: 13px !important;
+  }
+}
+  /* SECTION RESULT CARDS */
+
+#resultView #sectionResults .section-result-card {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  margin: 12px 0;
+  padding: 15px;
+  border: 1px solid #dbe4ff;
+  border-left: 5px solid #6366f1;
+  border-radius: 15px;
+  background: #ffffff;
+  box-shadow: 0 4px 12px rgba(49, 46, 129, 0.07);
+}
+
+#resultView #sectionResults .section-result-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+#resultView #sectionResults .section-result-name {
+  flex: 1 1 150px;
+  color: #202b55;
+  font-size: 15px;
+  font-weight: 800;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+#resultView #sectionResults .section-result-marks {
+  color: #4338ca;
+  font-size: 13px;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+#resultView #sectionResults .section-result-details {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+#resultView #sectionResults .section-result-badge {
+  display: inline-block;
+  padding: 6px 9px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+#resultView #sectionResults .section-correct {
+  color: #166534;
+  background: #dcfce7;
+}
+
+#resultView #sectionResults .section-incorrect {
+  color: #b91c1c;
+  background: #fee2e2;
+}
+
+#resultView #sectionResults .section-unanswered {
+  color: #1d4ed8;
+  background: #dbeafe;
+}
+</style>
+</head>
+
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <div class="brand">
+      <p class="brand-title">Biotechnology Questions</p>
+      <div class="brand-subtitle">Student Test Portal</div>
+    </div>
+
+    <button
+      type="button"
+      class="btn btn-secondary palette-toggle"
+      id="paletteToggle"
+      hidden
+      aria-label="Open question palette"
+      aria-expanded="false"
+    >Questions</button>
+  </div>
+</header>
+
+<main class="page">
+
+  <!-- Loading and error state -->
+  <section class="card" id="loadingState">
+    <h1 class="page-title">Loading test...</h1>
+    <p class="muted">Please wait while we load your test.</p>
+  </section>
+
+  <!-- Test introduction -->
+  <section class="card" id="introView" hidden>
+    <p class="small muted">TEST INSTRUCTIONS</p>
+    <h1 class="page-title" id="introTitle">Test</h1>
+    <p class="muted" id="introDescription">
+      Read the instructions before starting.
+    </p>
+
+    <div class="meta-grid" id="introMeta"></div>
+
+    <div class="empty-message">
+      <strong>Before you begin</strong>
+      <ul>
+        <li>Check the test duration and maximum marks.</li>
+        <li>Use the question palette to navigate between questions.</li>
+        <li>Review your answers before submitting.</li>
+      </ul>
+    </div>
+
+    <button
+      type="button"
+      class="btn btn-primary full-button"
+      id="startTestBtn"
+    >Start Test</button>
+  </section>
+
+  <!-- Active test -->
+  <section id="testView" hidden>
+
+    <div class="card">
+      <div class="test-toolbar">
+        <h2 id="testTitle">Test</h2>
+        <div class="timer" id="timerBox">
+          Time left: <span id="timerValue">--:--</span>
+        </div>
+      </div>
+
+      <div class="muted small" id="testMeta"></div>
+
+      <div
+        class="progress-track"
+        role="progressbar"
+        aria-label="Test progress"
+        aria-valuemin="0"
+        aria-valuemax="100"
+        aria-valuenow="0"
+        id="progressTrack"
+      >
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="section-name" id="sectionName"></div>
+
+      <div class="question-info">
+        <div class="question-number" id="questionNumber">Q1</div>
+      
+        <div class="muted small" id="questionCounter"></div>
+      </div>
+
+      <div class="question-text" id="questionText"></div>
+
+      <div class="question-options" id="questionOptions"></div>
+
+      <div
+        class="practice-feedback"
+        id="practiceFeedback"
+        hidden
+        aria-live="polite"
+      ></div>
+            <button id="checkMSQBtn" type="button" hidden>
+        Check Answer
+            </button>
+
+      <div class="question-navigation">
+        <button
+          type="button"
+          class="btn btn-secondary"
+          id="prevBtn"
+        >Previous</button>
+
+        <button
+          type="button"
+          class="btn btn-outline"
+          id="markBtn"
+        >Mark for Review</button>
+
+        <div class="spacer"></div>
+
+        <button
+          type="button"
+          class="btn btn-primary"
+          id="nextBtn"
+        >Next</button>
+
+        <button
+          type="button"
+          class="btn btn-success"
+          id="submitBtn"
+        >Submit Test</button>
+        <p id="saveMessage" hidden>
+  Answer saved ✓
+        </p>
+      </div>
+      <div class="question-marks" id="questionMarks"></div>
+    </div>
+
+  </section>
+
+  <!-- Result screen -->
+  <section class="card" id="resultView" hidden>
+    <p class="small muted">TEST COMPLETED</p>
+    <h1 class="page-title">Your Result</h1>
+
+    <div id="resultSummary"></div>
+
+    <div id="sectionResults"></div>
+
+    <div id="answerReview"></div>
+
+    <button
+      type="button"
+      class="btn btn-primary full-button"
+      id="reattemptBtn"
+    >Reattempt Test</button>
+  </section>
+
+</main>
+
+<!-- Question palette drawer -->
+<div
+  class="palette-overlay"
+  id="paletteOverlay"
+  hidden
+></div>
+
+<aside
+  class="palette-panel"
+  id="palettePanel"
+  aria-label="Question palette"
+  hidden
+>
+  <div class="palette-header">
+    <h2>Question Palette</h2>
+    <button
+      type="button"
+      class="btn btn-outline"
+      id="paletteClose"
+      aria-label="Close question palette"
+    >Close</button>
+  </div>
+
+  <div class="palette-content">
+
+    <!-- Keep the legend here only; JavaScript will render question buttons below. -->
+    <div class="palette-legend" id="paletteLegend">
+      <div class="legend-item">
+        <span class="status-dot status-not-visited"></span>
+        <span>Not Visited</span>
+      </div>
+
+      <div class="legend-item">
+        <span class="status-dot status-unanswered"></span>
+        <span>Unanswered</span>
+      </div>
+
+      <div class="legend-item">
+        <span class="status-dot status-answered"></span>
+        <span>Answered</span>
+      </div>
+
+      <div class="legend-item">
+        <span class="status-dot status-marked"></span>
+        <span>Marked for Review</span>
+      </div>
+    </div>
+
+    <div id="paletteSections"></div>
+  </div>
+</aside>
+
+<script>
+"use strict";
+
+/* ========== PART 2: TEST DATA & INITIALISATION ========== */
+
+const StudentTest = {
+  test: null,
+  questions: [],
+  sections: [],
+  testId: "",
+  mode: "mock",
+  currentIndex: 0,
+  answers: {},
+  marked: {},
+  visited: {},
+  submitted: false,
+  checkedMSQ: null,
+  started: false,
+  remainingSeconds: 0,
+  timerInterval: null
+};
+
+function studentEscapeHTML(value) {
+  return String(value ?? "").replace(/[&<>"']/g, function (char) {
+    const entities = {
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    };
+    return entities[char];
+  });
+}
+
+function getStudentURLParameter(name) {
+  return new URLSearchParams(window.location.search).get(name);
+}
+
+function getStudentQuestionType(question) {
+  const type = String(question?.type ?? "mcq").toLowerCase();
+
+  if (type.includes("msq") || type.includes("multiple select")) {
+    return "msq";
+  }
+
+  if (type === "nat" || type.includes("numerical")) {
+    return "nat";
+  }
+
+  if (
+    type === "short" ||
+    type.includes("short answer") ||
+    type.includes("subjective")
+  ) {
+    return "short";
+  }
+
+  return "mcq";
+}
+
+function getStudentMode(test) {
+  const rawType = String(test?.type ?? "mock").toLowerCase();
+
+  if (rawType.includes("practice")) return "practice";
+  if (rawType.includes("pyq") || rawType.includes("previous")) return "pyq";
+
+  return "mock";
+}
+
+function formatStudentTestType(type) {
+  if (type === "practice") return "Practice Test";
+  if (type === "pyq") return "Previous Year Questions";
+  return "Mock Test";
+}
+
+function getStudentModeLabel(mode) {
+  return formatStudentTestType(mode);
+}
+
+function getStudentQuestionKey(question, index) {
+  return "q-" + index + "-" + String(question?.id ?? index);
+}
+
+function getStudentQuestionMarks(question) {
+  const value = Number(question?.marks);
+  if (Number.isFinite(value)) return value;
+
+  const defaultValue = Number(StudentTest.test?.defaultMarks);
+  return Number.isFinite(defaultValue) ? defaultValue : 1;
+}
+
+function getStudentQuestionNegativeMarks(question) {
+  const value = Number(question?.negativeMarks);
+  if (Number.isFinite(value)) return value;
+
+  const defaultValue = Number(StudentTest.test?.negativeMarking);
+  return Number.isFinite(defaultValue) ? defaultValue : 0;
+}
+
+function getStudentQuestionText(question) {
+  return String(question?.text ?? question?.question ?? "");
+}
+
+function getStudentSectionName(question) {
+  if (!question) return "General Questions";
+
+  const sectionId = question.sectionId;
+
+  if (sectionId != null && String(sectionId) !== "") {
+    const section = StudentTest.sections.find(
+      item => String(item.id) === String(sectionId)
+    );
+
+    if (section) {
+      return String(section.name ?? "Section");
+    }
+  }
+
+  return "General Questions";
+}
+
+function showLoadError(message) {
+  const loading = document.getElementById("loadingState");
+
+  if (loading) {
+    loading.innerHTML =
+      '<h1 class="page-title">Unable to Load Test</h1>' +
+      '<div class="error-message">' +
+      studentEscapeHTML(message) +
+      '</div>' +
+      '<p class="muted small">Open this page using the test link from your website.</p>';
+    loading.hidden = false;
+  }
+
+  document.getElementById("introView").hidden = true;
+  document.getElementById("testView").hidden = true;
+  document.getElementById("resultView").hidden = true;
+  document.getElementById("paletteToggle").hidden = true;
+  document.getElementById("palettePanel").hidden = true;
+  document.getElementById("paletteOverlay").hidden = true;
+}
+
+function getStudentTestDuration(test) {
+  const duration = Number(test?.duration);
+
+  if (!Number.isFinite(duration) || duration <= 0) {
+    return 0;
+  }
+
+  return Math.floor(duration * 60);
+}
+
+function getStudentTotalMarks(test, questions) {
+  const storedTotal = Number(test?.totalMarks);
+
+  if (
+    Number.isFinite(storedTotal) &&
+    storedTotal >= 0 &&
+    test.totalMarks !== "" &&
+    test.totalMarks != null
+  ) {
+    return storedTotal;
+  }
+
+  return questions.reduce(function (sum, question) {
+    return sum + getStudentQuestionMarks(question);
+  }, 0);
+}
+
+function loadSavedTest() {
+  const testId = getStudentURLParameter("id");
+
+  if (!testId) {
+    showLoadError(
+      "Test ID is missing from the URL. Open the test using its Start button."
+    );
+    return;
+  }
+
+  let savedTests;
+
+  try {
+    savedTests = JSON.parse(localStorage.getItem("bq_tests") || "[]");
+  } catch (error) {
+    showLoadError(
+      "Saved test data could not be read. Please check the website's saved test data."
+    );
+    return;
+  }
+
+  if (!Array.isArray(savedTests)) {
+    showLoadError("The saved tests data has an unexpected format.");
+    return;
+  }
+
+  const test = savedTests.find(
+    item => String(item?.id) === String(testId)
+  );
+
+  if (!test) {
+    showLoadError(
+      "This test was not found in the saved tests. Make sure it has been saved in Test Manager."
+    );
+    return;
+  }
+
+  if (!Array.isArray(test.questions) || test.questions.length === 0) {
+    showLoadError("This test does not contain any saved questions.");
+    return;
+  }
+
+  StudentTest.test = test;
+  StudentTest.testId = String(test.id);
+  StudentTest.mode = getStudentMode(test);
+  StudentTest.questions = test.questions;
+  StudentTest.sections = Array.isArray(test.sections) ? test.sections : [];
+  StudentTest.remainingSeconds = getStudentTestDuration(test);
+
+  const introTitle = document.getElementById("introTitle");
+  const introDescription = document.getElementById("introDescription");
+  const introMeta = document.getElementById("introMeta");
+
+  introTitle.textContent = String(test.name || "Untitled Test");
+  introDescription.textContent =
+    formatStudentTestType(StudentTest.mode) +
+    ". Read the test details before you begin.";
+
+  const totalMarks = getStudentTotalMarks(test, StudentTest.questions);
+  const duration = Number(test.duration) || 0;
+
+  const metaItems = [
+    ["Test Type", formatStudentTestType(StudentTest.mode)],
+    ["Questions", StudentTest.questions.length],
+    ["Maximum Marks", totalMarks],
+    ["Duration", duration > 0 ? duration + " minutes" : "No time limit"],
+    ["Subject", test.subject || "Not specified"],
+    ["Exam", test.exam || "Not specified"]
+  ];
+
+  introMeta.innerHTML = metaItems.map(function (item) {
+    return (
+      '<div class="meta-item">' +
+        '<span class="meta-label">' +
+          studentEscapeHTML(item[0]) +
+        '</span>' +
+        '<span class="meta-value">' +
+          studentEscapeHTML(item[1]) +
+        '</span>' +
+      '</div>'
+    );
+  }).join("");
+
+  document.getElementById("loadingState").hidden = true;
+  document.getElementById("introView").hidden = false;
+  document.getElementById("testView").hidden = true;
+  document.getElementById("resultView").hidden = true;
+}
+
+document.addEventListener("DOMContentLoaded", loadSavedTest);
+
+/* ========== END OF PART 2 ========== */
+  /* ========== PART 3: QUESTION DISPLAY & NAVIGATION ========== */
+
+function getStudentCurrentQuestion() {
+  return StudentTest.questions[StudentTest.currentIndex] || null;
+}
+
+function getStudentDisplayQuestionNumber(question, index) {
+  /*
+    Section-wise numbering will be enabled when we confirm
+    the exact numbering setting saved by Test Manager.
+    Until then, keep the numbering predictable.
+  */
+  const setting = StudentTest.test?.questionNumbering;
+
+  const mode = String(
+    typeof setting === "object" && setting !== null
+      ? (setting.mode ?? setting.type ?? setting.value ?? "")
+      : (setting ?? "")
+  ).toLowerCase();
+
+  const resetPerSection =
+    mode.includes("reset") || mode.includes("section");
+
+  if (!resetPerSection) {
+    return index + 1;
+  }
+
+  const targetSection = question?.sectionId;
+
+  let count = 0;
+
+  for (let i = 0; i <= index; i++) {
+    const other = StudentTest.questions[i];
+
+    let isSameSection;
+
+    if (targetSection != null && String(targetSection) !== "") {
+      isSameSection =
+        other?.sectionId != null &&
+        String(other.sectionId) === String(targetSection);
+    } else {
+      isSameSection =
+        getStudentSectionName(other) ===
+        getStudentSectionName(question);
+    }
+
+    if (isSameSection) count++;
+  }
+
+  return count;
+}
+
+function saveCurrentStudentAnswer() {
+  const question = getStudentCurrentQuestion();
+
+  if (!question) return;
+
+  const index = StudentTest.currentIndex;
+  const key = getStudentQuestionKey(question, index);
+  const type = getStudentQuestionType(question);
+  const container = document.getElementById("questionOptions");
+
+  if (!container) return;
+
+  if (type === "mcq") {
+    const selected = container.querySelector(
+      'input[name="student-answer"]:checked'
+    );
+
+    StudentTest.answers[key] = selected
+      ? Number(selected.value)
+      : null;
+  } else if (type === "msq") {
+    const selected = Array.from(
+      container.querySelectorAll(
+        'input[name="student-answer"]:checked'
+      )
+    ).map(input => Number(input.value));
+
+    StudentTest.answers[key] = selected;
+  } else if (type === "nat" || type === "short") {
+    const input = container.querySelector(
+      '[name="student-answer"]'
+    );
+
+    StudentTest.answers[key] = input ? input.value.trim() : "";
+  }
+}
+
+function isStudentAnswerPresent(question, index) {
+  const key = getStudentQuestionKey(question, index);
+  const answer = StudentTest.answers[key];
+  const type = getStudentQuestionType(question);
+
+  if (type === "mcq") {
+    return answer !== null && answer !== undefined;
+  }
+
+  if (type === "msq") {
+    return Array.isArray(answer) && answer.length > 0;
+  }
+
+  return answer !== null &&
+    answer !== undefined &&
+    String(answer).trim() !== "";
+}
+
+function renderStudentQuestion() {
+  const question = getStudentCurrentQuestion();
+
+  if (!question) return;
+
+  const index = StudentTest.currentIndex;
+  const key = getStudentQuestionKey(question, index);
+  const type = getStudentQuestionType(question);
+
+  const sectionName = document.getElementById("sectionName");
+  const questionNumber = document.getElementById("questionNumber");
+  const questionCounter = document.getElementById("questionCounter");
+  const questionMarks = document.getElementById("questionMarks");
+  const questionText = document.getElementById("questionText");
+  const questionOptions = document.getElementById("questionOptions");
+  const progressFill = document.getElementById("progressFill");
+  const progressTrack = document.getElementById("progressTrack");
+  const practiceFeedback = document.getElementById("practiceFeedback");
+
+  sectionName.textContent = getStudentSectionName(question);
+
+  questionNumber.textContent =
+    "Q" + getStudentDisplayQuestionNumber(question, index);
+
+  questionCounter.textContent =
+    (index + 1) + " of " + StudentTest.questions.length;
+
+  questionMarks.textContent =
+    "Marks: " + getStudentQuestionMarks(question) +
+    " | Negative: " + getStudentQuestionNegativeMarks(question);
+
+  questionText.textContent = getStudentQuestionText(question);
+  questionOptions.innerHTML = "";
+
+  const progress = Math.round(
+    ((index + 1) / StudentTest.questions.length) * 100
+  );
+
+  progressFill.style.width = progress + "%";
+  progressTrack.setAttribute("aria-valuenow", String(progress));
+
+  practiceFeedback.hidden = true;
+  practiceFeedback.innerHTML = "";
+  practiceFeedback.className = "practice-feedback";
+
+  if (type === "mcq" || type === "msq") {
+    const options = Array.isArray(question.options)
+      ? question.options
+      : [];
+
+    if (options.length === 0) {
+      questionOptions.innerHTML =
+        '<div class="empty-message">No options were saved for this question.</div>';
+    } else {
+      options.forEach(function (option, optionIndex) {
+        const optionText =
+          typeof option === "object" && option !== null
+            ? String(option.text ?? option.value ?? "")
+            : String(option ?? "");
+
+        const inputType = type === "msq" ? "checkbox" : "radio";
+        const savedAnswer = StudentTest.answers[key];
+
+        const isChecked = type === "msq"
+          ? Array.isArray(savedAnswer) &&
+            savedAnswer.includes(optionIndex)
+          : savedAnswer === optionIndex;
+
+        const label = document.createElement("label");
+        label.className = "option-row";
+
+        const input = document.createElement("input");
+        input.type = inputType;
+        input.name = "student-answer";
+        input.value = String(optionIndex);
+        input.checked = isChecked;
+
+        const text = document.createElement("span");
+        text.className = "option-label";
+        text.textContent =
+          String.fromCharCode(65 + optionIndex) + ". " + optionText;
+
+        label.appendChild(input);
+        label.appendChild(text);
+        questionOptions.appendChild(label);
+      });
+    }
+  } else {
+    const input = document.createElement(
+      type === "short" ? "textarea" : "input"
+    );
+
+    input.className = "answer-input";
+    input.name = "student-answer";
+    input.id = "studentAnswerInput";
+
+    if (type === "short") {
+      input.rows = 4;
+      input.placeholder = "Type your answer here...";
+        } else {
+      input.type = "text";
+      input.inputMode = "decimal";
+      input.autocomplete = "off";
+      input.placeholder = "Enter your numerical answer...";
+
+      input.addEventListener("input", function () {
+        const cleaned = input.value.replace(/[^0-9.-]/g, "");
+        let result = "";
+
+        for (let i = 0; i < cleaned.length; i++) {
+          const char = cleaned[i];
+
+          if (char >= "0" && char <= "9") {
+            result += char;
+          } else if (char === "." && !result.includes(".")) {
+            result += char;
+          } else if (
+            char === "-" &&
+            i === 0 &&
+            !result.includes("-")
+          ) {
+            result += char;
+          }
+        }
+
+        if (input.value !== result) {
+          input.value = result;
+        }
+
+        saveCurrentStudentAnswer();
+      });
+    }
+
+    input.value = StudentTest.answers[key] ?? "";
+    questionOptions.appendChild(input);
+  }
+
+  document.getElementById("prevBtn").disabled = index === 0;
+
+const nextBtn = document.getElementById("nextBtn");
+
+if (index === StudentTest.questions.length - 1) {
+  nextBtn.textContent = "Save";
+  nextBtn.disabled = false;
+} else {
+  nextBtn.textContent = "Next";
+  nextBtn.disabled = false;
+}
+
+  document.getElementById("markBtn").textContent =
+    StudentTest.marked[key] ? "Unmark Review" : "Mark for Review";
+
+  if (typeof renderStudentPalette === "function") {
+    renderStudentPalette();
+  }
+
+  if (
+    StudentTest.mode === "practice" &&
+    isStudentAnswerPresent(question, index) &&
+    typeof renderStudentPracticeFeedback === "function"
+  ) {
+    renderStudentPracticeFeedback();
+  }
+  updateMSQCheckButton();
+}
+
+function startStudentTest() {
+    // Temporary local package-attempt tracking
+  const params = new URLSearchParams(window.location.search);
+  const packageId = params.get("packageId");
+
+  if (packageId) {
+    let packages = [];
+
+    try {
+      packages = JSON.parse(
+        localStorage.getItem("bq_packages") || "[]"
+      );
+    } catch (error) {
+      alert("Package information could not be loaded.");
+      return;
+    }
+
+    const pkg = packages.find(
+      p => String(p.id) === String(packageId)
+    );
+
+    if (!pkg || !(pkg.testIds || []).some(
+      id => String(id) === String(StudentTest.testId)
+    )) {
+      alert("This test is not included in the selected package.");
+      return;
+    }
+
+    const limit = pkg.attempts === "unlimited"
+      ? Infinity
+      : Number(pkg.attempts);
+
+    const attemptKey =
+      "bq_attempts_" + packageId + "_" + StudentTest.testId;
+
+    let used = Number(localStorage.getItem(attemptKey) || "0");
+
+    if (!Number.isFinite(limit) || limit < 0) {
+      // Unlimited attempts are allowed.
+    } else if (used >= limit) {
+      alert("You have used all attempts allowed for this test in this package.");
+      return;
+    }
+
+    localStorage.setItem(attemptKey, String(used + 1));
+  }
+  if (!StudentTest.test || StudentTest.questions.length === 0) return;
+
+  StudentTest.started = true;
+  StudentTest.submitted = false;
+  StudentTest.currentIndex = 0;
+
+  document.getElementById("introView").hidden = true;
+  document.getElementById("testView").hidden = false;
+  document.getElementById("resultView").hidden = true;
+  document.getElementById("paletteToggle").hidden = false;
+
+  const title = document.getElementById("testTitle");
+  const meta = document.getElementById("testMeta");
+
+  title.textContent = String(StudentTest.test.name || "Test");
+
+  meta.textContent =
+    formatStudentTestType(StudentTest.mode) +
+    " | " + StudentTest.questions.length + " questions";
+
+  const firstQuestion = StudentTest.questions[0];
+
+  if (firstQuestion) {
+    const firstKey = getStudentQuestionKey(firstQuestion, 0);
+    StudentTest.visited[firstKey] = true;
+  }
+
+  renderStudentQuestion();
+
+  if (typeof renderStudentPalette === "function") {
+    renderStudentPalette();
+  }
+const timerBox = document.getElementById("timerBox");
+
+if (StudentTest.mode === "practice") {
+  stopStudentTimer();
+  StudentTest.remainingSeconds = -1;
+
+  if (timerBox) {
+    timerBox.hidden = true;
+  }
+} else {
+  if (timerBox) {
+    timerBox.hidden = false;
+  }
+
+  if (typeof startStudentTimer === "function") {
+    startStudentTimer();
+  }
+}
+}
+
+function goToStudentQuestion(newIndex) {
+  if (StudentTest.submitted) return;
+
+  if (
+    newIndex < 0 ||
+    newIndex >= StudentTest.questions.length
+  ) {
+    return;
+  }
+
+  saveCurrentStudentAnswer();
+
+  StudentTest.currentIndex = newIndex;
+
+  const question = getStudentCurrentQuestion();
+
+  if (question) {
+    const key = getStudentQuestionKey(
+      question,
+      StudentTest.currentIndex
+    );
+
+    StudentTest.visited[key] = true;
+  }
+
+  renderStudentQuestion();
+}
+
+document.getElementById("startTestBtn").addEventListener(
+  "click",
+  startStudentTest
+);
+
+document.getElementById("prevBtn").addEventListener(
+  "click",
+  function () {
+    goToStudentQuestion(StudentTest.currentIndex - 1);
+  }
+);
+document.getElementById("nextBtn").addEventListener(
+  "click",
+  function () {
+    saveCurrentStudentAnswer();
+
+    const isLastQuestion =
+      StudentTest.currentIndex === StudentTest.questions.length - 1;
+
+    if (isLastQuestion) {
+  const message = document.getElementById("saveMessage");
+
+  if (message) {
+    message.hidden = false;
+  }
+
+  return;
+    }
+
+    goToStudentQuestion(StudentTest.currentIndex + 1);
+  }
+);
+
+document.getElementById("markBtn").addEventListener(
+  "click",
+  function () {
+    const question = getStudentCurrentQuestion();
+    if (!question) return;
+
+    const key = getStudentQuestionKey(
+      question,
+      StudentTest.currentIndex
+    );
+
+    StudentTest.marked[key] = !StudentTest.marked[key];
+
+    renderStudentQuestion();
+  }
+);
+document.getElementById("questionOptions").addEventListener(
+  "change",
+  function () {
+    saveCurrentStudentAnswer();
+
+    const question = getStudentCurrentQuestion();
+    const type = getStudentQuestionType(question);
+
+    if (type === "msq") {
+      StudentTest.checkedMSQ = null;
+
+      const feedback = document.getElementById("practiceFeedback");
+      if (feedback) {
+        feedback.hidden = true;
+        feedback.replaceChildren();
+      }
+    } else if (
+      StudentTest.mode === "practice" &&
+      typeof renderStudentPracticeFeedback === "function"
+    ) {
+      renderStudentPracticeFeedback();
+    }
+
+    updateMSQCheckButton();
+
+    if (typeof renderStudentPalette === "function") {
+      renderStudentPalette();
+    }
+  }
+);
+
+document.getElementById("questionOptions").addEventListener(
+  "input",
+  function () {
+    saveCurrentStudentAnswer();
+
+    if (typeof renderStudentPalette === "function") {
+      renderStudentPalette();
+    }
+  }
+);
+/* ========== END OF PART 3 ========== */
+  /* ========== PART 4: QUESTION PALETTE ========== */
+
+function getStudentPaletteStatus(question, index) {
+  const key = getStudentQuestionKey(question, index);
+
+  if (StudentTest.marked[key]) {
+    return {
+      className: "status-marked",
+      label: "Marked for Review"
+    };
+  }
+
+  if (!StudentTest.visited[key]) {
+    return {
+      className: "status-not-visited",
+      label: "Not Visited"
+    };
+  }
+
+  if (isStudentAnswerPresent(question, index)) {
+    return {
+      className: "status-answered",
+      label: "Answered"
+    };
+  }
+
+  return {
+    className: "status-unanswered",
+    label: "Unanswered"
+  };
+}
+
+function renderStudentPalette() {
+  const container = document.getElementById("paletteSections");
+
+  if (!container || !Array.isArray(StudentTest.questions)) {
+    return;
+  }
+
+  container.replaceChildren();
+
+  const questions = StudentTest.questions;
+  const sections = Array.isArray(StudentTest.sections)
+    ? StudentTest.sections
+    : [];
+
+  const groups = [];
+  const assignedIndexes = new Set();
+
+  sections.forEach(function(section, sectionIndex) {
+    const sectionId = String(section.id ?? "");
+
+    const items = [];
+
+    questions.forEach(function(question, questionIndex) {
+      if (String(question.sectionId ?? "") === sectionId) {
+        items.push({
+          question: question,
+          index: questionIndex
+        });
+
+        assignedIndexes.add(questionIndex);
+      }
+    });
+
+    if (items.length > 0) {
+      groups.push({
+        title: section.name || ("Section " + (sectionIndex + 1)),
+        items: items
+      });
+    }
+  });
+
+  const generalItems = [];
+
+  questions.forEach(function(question, index) {
+    if (!assignedIndexes.has(index)) {
+      generalItems.push({
+        question: question,
+        index: index
+      });
+    }
+  });
+
+  if (generalItems.length > 0) {
+    groups.push({
+      title: sections.length > 0 ? "General Questions" : "Questions",
+      items: generalItems
+    });
+  }
+
+  groups.forEach(function(group) {
+    const groupElement = document.createElement("div");
+    groupElement.className = "student-palette-group";
+
+    const heading = document.createElement("div");
+    heading.className = "student-palette-group-title";
+    heading.textContent = group.title;
+
+    const grid = document.createElement("div");
+    grid.className = "student-palette-grid";
+
+    group.items.forEach(function(item) {
+      const question = item.question;
+      const index = item.index;
+      const status = getStudentPaletteStatus(question, index);
+
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className =
+        "student-palette-question " + status.className;
+
+      if (index === StudentTest.currentIndex) {
+        button.classList.add("current-question");
+      }
+
+      button.textContent = String(
+        getStudentDisplayQuestionNumber(question, index)
+      );
+
+      button.setAttribute(
+        "aria-label",
+        "Question " +
+          getStudentDisplayQuestionNumber(question, index) +
+          ": " + status.label
+      );
+
+      button.title =
+        "Question " +
+        getStudentDisplayQuestionNumber(question, index) +
+        " — " + status.label;
+
+      button.addEventListener("click", function() {
+        if (StudentTest.submitted) {
+          return;
+        }
+
+        goToStudentQuestion(index);
+        closeStudentPalette();
+      });
+
+      grid.appendChild(button);
+    });
+
+    groupElement.appendChild(heading);
+    groupElement.appendChild(grid);
+    container.appendChild(groupElement);
+  });
+}
+
+function openStudentPalette() {
+  if (!StudentTest.started || StudentTest.submitted) {
+    return;
+  }
+
+  const overlay = document.getElementById("paletteOverlay");
+  const panel = document.getElementById("palettePanel");
+  const toggle = document.getElementById("paletteToggle");
+
+  renderStudentPalette();
+
+  if (overlay) {
+    overlay.hidden = false;
+  }
+
+  if (panel) {
+    panel.hidden = false;
+  }
+
+  if (toggle) {
+    toggle.setAttribute("aria-expanded", "true");
+  }
+}
+
+function closeStudentPalette() {
+  const overlay = document.getElementById("paletteOverlay");
+  const panel = document.getElementById("palettePanel");
+  const toggle = document.getElementById("paletteToggle");
+
+  if (overlay) {
+    overlay.hidden = true;
+  }
+
+  if (panel) {
+    panel.hidden = true;
+  }
+
+  if (toggle) {
+    toggle.setAttribute("aria-expanded", "false");
+  }
+}
+
+const studentPaletteToggle =
+  document.getElementById("paletteToggle");
+
+const studentPaletteClose =
+  document.getElementById("paletteClose");
+
+const studentPaletteOverlay =
+  document.getElementById("paletteOverlay");
+
+if (studentPaletteToggle) {
+  studentPaletteToggle.addEventListener("click", function() {
+    openStudentPalette();
+  });
+}
+
+if (studentPaletteClose) {
+  studentPaletteClose.addEventListener("click", function() {
+    closeStudentPalette();
+  });
+}
+
+if (studentPaletteOverlay) {
+  studentPaletteOverlay.addEventListener("click", function(event) {
+    if (event.target === studentPaletteOverlay) {
+      closeStudentPalette();
+    }
+  });
+}
+
+document.addEventListener("keydown", function(event) {
+  if (event.key === "Escape") {
+    closeStudentPalette();
+  }
+});
+
+/* Show the palette button after the student starts the test. */
+const studentPaletteStartButton =
+  document.getElementById("startTestBtn");
+
+if (studentPaletteStartButton) {
+  studentPaletteStartButton.addEventListener("click", function() {
+    const toggle = document.getElementById("paletteToggle");
+
+    if (toggle && StudentTest.started) {
+      toggle.hidden = false;
+    }
+  });
+}
+
+/* ========== END OF PART 4 ========== */
+  /* ========== PART 5A: PRACTICE FEEDBACK ========== */
+
+function getStudentExpectedAnswer(question) {
+  const type = getStudentQuestionType(question);
+
+  if (type === "mcq" || type === "msq") {
+    const correct = question.correctAnswers;
+
+    if (Array.isArray(correct)) {
+      return correct.map(function(index) {
+        const option = question.options?.[Number(index)];
+        return typeof option === "string"
+          ? option
+          : (option?.text ?? "");
+      }).filter(Boolean);
+    }
+
+    return [];
+  }
+
+  if (type === "nat") {
+    return [String(question.natAnswer ?? "")];
+  }
+
+  return [];
+}
+
+function checkStudentPracticeAnswer(question, index) {
+  const key = getStudentQuestionKey(question, index);
+  const answer = StudentTest.answers[key];
+  const type = getStudentQuestionType(question);
+
+  if (type === "mcq") {
+    const correct = Array.isArray(question.correctAnswers)
+      ? question.correctAnswers.map(Number)
+      : [];
+
+    return answer !== null &&
+      answer !== undefined &&
+      correct.includes(Number(answer));
+  }
+
+  if (type === "msq") {
+    const correct = Array.isArray(question.correctAnswers)
+      ? question.correctAnswers.map(Number).sort(function(a, b) {
+          return a - b;
+        })
+      : [];
+
+    const selected = Array.isArray(answer)
+      ? answer.map(Number).sort(function(a, b) {
+          return a - b;
+        })
+      : [];
+
+    return correct.length > 0 &&
+      correct.length === selected.length &&
+      correct.every(function(value, i) {
+        return value === selected[i];
+      });
+  }
+
+  if (type === "nat") {
+    const expected = Number(question.natAnswer);
+    const actual = Number(answer);
+    const tolerance = Math.abs(Number(question.natTolerance) || 0);
+
+    return String(answer ?? "").trim() !== "" &&
+      Number.isFinite(actual) &&
+      Number.isFinite(expected) &&
+      Math.abs(actual - expected) <= tolerance;
+  }
+
+  return null;
+}
+
+function renderStudentPracticeFeedback() {
+  const box = document.getElementById("practiceFeedback");
+  const question = getStudentCurrentQuestion();
+
+  if (!box || !question) {
+    return;
+  }
+
+  box.replaceChildren();
+  box.hidden = true;
+
+  if (
+    StudentTest.mode !== "practice" ||
+    !isStudentAnswerPresent(question, StudentTest.currentIndex)
+  ) {
+    return;
+  }
+
+  const type = getStudentQuestionType(question);
+if (type === "msq") {
+  const key = getStudentQuestionKey(
+    question,
+    StudentTest.currentIndex
+  );
+
+  if (StudentTest.checkedMSQ !== key) {
+    return;
+  }
+    }
+  if (type === "short") {
+    return;
+  }
+
+  const correct = checkStudentPracticeAnswer(
+    question,
+    StudentTest.currentIndex
+  );
+
+  if (correct === null) {
+    return;
+  }
+
+  box.hidden = false;
+  box.className = correct
+    ? "practice-feedback correct"
+    : "practice-feedback incorrect";
+
+  const heading = document.createElement("strong");
+  heading.textContent = correct ? "Correct answer!" : "Incorrect answer";
+  box.appendChild(heading);
+
+  if (!correct) {
+    const expectedAnswers = getStudentExpectedAnswer(question);
+
+    if (expectedAnswers.length > 0) {
+      const answerLine = document.createElement("p");
+      answerLine.textContent =
+        "Correct answer: " + expectedAnswers.join(", ");
+      box.appendChild(answerLine);
+    }
+  }
+
+  if (question.explanation) {
+    const explanation = document.createElement("p");
+    explanation.textContent = "Explanation: " + question.explanation;
+    box.appendChild(explanation);
+  }
+}
+
+/* ========== END OF PART 5A ========== */
+  /* ========== PART 5B: COUNTDOWN TIMER ========== */
+
+function stopStudentTimer() {
+  if (StudentTest.timerInterval) {
+    clearInterval(StudentTest.timerInterval);
+    StudentTest.timerInterval = null;
+  }
+}
+
+function formatStudentTime(seconds) {
+  const safeSeconds = Math.max(0, seconds);
+  const minutes = Math.floor(safeSeconds / 60);
+  const remaining = safeSeconds % 60;
+
+  return String(minutes).padStart(2, "0") +
+    ":" +
+    String(remaining).padStart(2, "0");
+}
+
+function updateStudentTimerDisplay() {
+  const display = document.getElementById("timerValue");
+  const box = document.getElementById("timerBox");
+
+  if (!display || !box) {
+    return;
+  }
+
+  if (StudentTest.remainingSeconds < 0) {
+    display.textContent = "--:--";
+    box.classList.remove("timer-warning");
+    return;
+  }
+
+  display.textContent = formatStudentTime(
+    StudentTest.remainingSeconds
+  );
+
+  box.classList.toggle(
+    "timer-warning",
+    StudentTest.remainingSeconds <= 60
+  );
+}
+
+function startStudentTimer() {
+  stopStudentTimer();
+
+  const durationSeconds = getStudentTestDuration(StudentTest.test);
+
+  if (!durationSeconds || durationSeconds <= 0) {
+    StudentTest.remainingSeconds = -1;
+    updateStudentTimerDisplay();
+    return;
+  }
+
+  StudentTest.remainingSeconds = durationSeconds;
+  updateStudentTimerDisplay();
+
+  StudentTest.timerInterval = setInterval(function() {
+    if (StudentTest.submitted) {
+      stopStudentTimer();
+      return;
+    }
+
+    StudentTest.remainingSeconds -= 1;
+    updateStudentTimerDisplay();
+
+    if (StudentTest.remainingSeconds <= 0) {
+      StudentTest.remainingSeconds = 0;
+      updateStudentTimerDisplay();
+      stopStudentTimer();
+
+      if (typeof submitStudentTest === "function") {
+        submitStudentTest(true);
+      } else {
+        console.error(
+          "Timer reached zero, but submitStudentTest() is not added yet."
+        );
+      }
+    }
+  }, 1000);
+}
+
+/* ========== END OF PART 5B ========== */
+  const checkMSQBtn = document.getElementById("checkMSQBtn");
+
+function updateMSQCheckButton() {
+  if (!checkMSQBtn) return;
+
+  const question = getStudentCurrentQuestion();
+  const isMSQ = question && getStudentQuestionType(question) === "msq";
+
+  checkMSQBtn.hidden = !(
+    StudentTest.started &&
+    !StudentTest.submitted &&
+    StudentTest.mode === "practice" &&
+    isMSQ
+  );
+
+  if (isMSQ) {
+    const key = getStudentQuestionKey(question, StudentTest.currentIndex);
+    checkMSQBtn.disabled =
+      !isStudentAnswerPresent(question, StudentTest.currentIndex) ||
+      StudentTest.checkedMSQ === key;
+  }
+}
+
+checkMSQBtn.addEventListener("click", function() {
+  const question = getStudentCurrentQuestion();
+
+  if (
+    !question ||
+    getStudentQuestionType(question) !== "msq" ||
+    !isStudentAnswerPresent(question, StudentTest.currentIndex)
+  ) return;
+
+  StudentTest.checkedMSQ = getStudentQuestionKey(
+    question,
+    StudentTest.currentIndex
+  );
+
+  renderStudentPracticeFeedback();
+  updateMSQCheckButton();
+});
+  
+function submitStudentTest(autoSubmit) {
+  if (StudentTest.submitted || !StudentTest.started) return;
+
+  saveCurrentStudentAnswer();
+
+  const questions = StudentTest.questions;
+  const totalQuestions = questions.length;
+  let answeredCount = 0;
+
+  questions.forEach(function(question, index) {
+    if (isStudentAnswerPresent(question, index)) {
+      answeredCount++;
+    }
+  });
+
+  const unansweredCount = totalQuestions - answeredCount;
+
+  // Manual submission asks for confirmation.
+  // Timer submission skips confirmation.
+  if (!autoSubmit) {
+    const confirmed = window.confirm(
+      "Are you sure you want to submit the test?\n\n" +
+      "Answered: " + answeredCount + " / " + totalQuestions + "\n" +
+      "Unanswered: " + unansweredCount
+    );
+
+    if (!confirmed) return;
+  }
+
+  StudentTest.submitted = true;
+  stopStudentTimer();
+
+  let correctCount = 0;
+  let incorrectCount = 0;
+  let ungradedCount = 0;
+  let obtainedMarks = 0;
+
+  const sectionScores = {};
+  const reviewItems = [];
+
+  questions.forEach(function(question, index) {
+    const key = getStudentQuestionKey(question, index);
+    const answered = isStudentAnswerPresent(question, index);
+    const type = getStudentQuestionType(question);
+    const marks = getStudentQuestionMarks(question);
+    const negative = Math.abs(getStudentQuestionNegativeMarks(question));
+
+    let correct = null;
+
+    if (answered) {
+      if (
+        type === "mcq" ||
+        type === "msq" ||
+        type === "nat"
+      ) {
+        correct = checkStudentPracticeAnswer(question, index);
+      } else {
+        // Short answers are not automatically graded yet.
+        ungradedCount++;
+      }
+    }
+
+    if (!answered) {
+      // No marks for unanswered questions.
+    } else if (correct === true) {
+      correctCount++;
+      obtainedMarks += marks;
+    } else if (correct === false) {
+      incorrectCount++;
+      obtainedMarks -= negative;
+    }
+
+    const sectionName = getStudentSectionName(question);
+
+    if (!sectionScores[sectionName]) {
+      sectionScores[sectionName] = {
+        total: 0,
+        correct: 0,
+        incorrect: 0,
+        unanswered: 0,
+        marks: 0
+      };
+    }
+
+    const section = sectionScores[sectionName];
+    section.total++;
+
+    if (!answered) {
+      section.unanswered++;
+    } else if (correct === true) {
+      section.correct++;
+      section.marks += marks;
+    } else if (correct === false) {
+      section.incorrect++;
+      section.marks -= negative;
+    }
+
+    reviewItems.push({
+      question: question,
+      index: index,
+      answered: answered,
+      correct: correct,
+      answer: StudentTest.answers[key]
+    });
+  });
+
+  const totalMarks = getStudentTotalMarks(
+    StudentTest.test,
+    questions
+  );
+
+  const summary = document.getElementById("resultSummary");
+  const sectionContainer = document.getElementById("sectionResults");
+  const reviewContainer = document.getElementById("answerReview");
+if (summary) {
+  summary.replaceChildren();
+
+  const percentage = totalMarks > 0
+    ? Math.max(0, Math.min(100, (obtainedMarks / totalMarks) * 100))
+    : 0;
+
+  const hero = document.createElement("div");
+  hero.className = "result-hero";
+
+
+  const heading = document.createElement("h2");
+  heading.textContent = "Your Performance";
+  hero.appendChild(heading);
+
+  const score = document.createElement("div");
+  score.className = "result-score";
+
+  const scoreValue = document.createElement("span");
+  scoreValue.textContent = Number(obtainedMarks.toFixed(2));
+
+  const scoreTotal = document.createElement("span");
+  scoreTotal.className = "result-score-total";
+  scoreTotal.textContent = " / " + totalMarks + " marks";
+
+  score.appendChild(scoreValue);
+  score.appendChild(scoreTotal);
+  hero.appendChild(score);
+
+  const percentageText = document.createElement("p");
+  percentageText.className = "result-percentage";
+  percentageText.textContent = percentage.toFixed(1) + "% score";
+  hero.appendChild(percentageText);
+
+  const progress = document.createElement("div");
+  progress.className = "result-progress";
+
+  const progressFill = document.createElement("div");
+  progressFill.className = "result-progress-fill";
+  progressFill.style.width = percentage + "%";
+
+  progress.appendChild(progressFill);
+  hero.appendChild(progress);
+  summary.appendChild(hero);
+  // Package attempt counter in result summary
+  const attemptParams = new URLSearchParams(window.location.search);
+  const attemptPackageId = attemptParams.get("packageId");
+
+  if (attemptPackageId) {
+    let attemptPackages = [];
+
+    try {
+      attemptPackages = JSON.parse(
+        localStorage.getItem("bq_packages") || "[]"
+      );
+    } catch (error) {
+      attemptPackages = [];
+    }
+
+    const attemptPackage = attemptPackages.find(
+      p => String(p.id) === String(attemptPackageId)
+    );
+
+    if (attemptPackage) {
+      const attemptKey =
+        "bq_attempts_" + attemptPackageId + "_" + StudentTest.testId;
+
+      const attemptsUsed = Number(
+        localStorage.getItem(attemptKey) || "0"
+      );
+
+      const attemptLimit =
+        attemptPackage.attempts === "unlimited"
+          ? "Unlimited"
+          : String(attemptPackage.attempts || "—");
+
+      const attemptCard = document.createElement("div");
+      attemptCard.className = "result-attempt-info";
+      attemptCard.style.cssText =
+        "margin:14px 0;padding:13px 16px;" +
+        "border:1px solid #dbe7ee;border-radius:12px;" +
+        "background:#f4f8fb;color:#183b40;" +
+        "display:flex;justify-content:space-between;" +
+        "align-items:center;gap:10px;flex-wrap:wrap;";
+
+      const attemptLabel = document.createElement("span");
+      attemptLabel.textContent = "Attempts Used";
+
+      const attemptValue = document.createElement("strong");
+      attemptValue.textContent =
+        "Attempt " + attemptsUsed + " / " + attemptLimit;
+
+      attemptCard.appendChild(attemptLabel);
+      attemptCard.appendChild(attemptValue);
+      summary.appendChild(attemptCard);
+    }
+}
+  const stats = document.createElement("div");
+  stats.className = "result-stats";
+
+  [
+    { label: "Correct", value: correctCount, className: "stat-correct" },
+    { label: "Incorrect", value: incorrectCount, className: "stat-incorrect" },
+    { label: "Unanswered", value: unansweredCount, className: "stat-unanswered" }
+  ].forEach(function(item) {
+    const card = document.createElement("div");
+    card.className = "result-stat-card " + item.className;
+
+    const number = document.createElement("strong");
+    number.textContent = item.value;
+
+    const label = document.createElement("span");
+    label.textContent = item.label;
+
+    card.appendChild(number);
+    card.appendChild(label);
+    stats.appendChild(card);
+  });
+
+  summary.appendChild(stats);
+}
+
+  if (sectionContainer) {
+  sectionContainer.replaceChildren();
+
+  const heading = document.createElement("h3");
+  heading.textContent = "Section-wise Result";
+  sectionContainer.appendChild(heading);
+
+  Object.keys(sectionScores).forEach(function(name) {
+    const data = sectionScores[name];
+
+    const card = document.createElement("div");
+    card.className = "section-result-card";
+
+    const topRow = document.createElement("div");
+    topRow.className = "section-result-top";
+
+    const sectionTitle = document.createElement("strong");
+    sectionTitle.className = "section-result-name";
+    sectionTitle.textContent = name;
+
+    const marks = document.createElement("span");
+    marks.className = "section-result-marks";
+    marks.textContent = "Marks: " + Number(data.marks.toFixed(2));
+
+    topRow.appendChild(sectionTitle);
+    topRow.appendChild(marks);
+    card.appendChild(topRow);
+
+    const details = document.createElement("div");
+    details.className = "section-result-details";
+
+    [
+      {
+        text: data.correct + " correct",
+        className: "section-correct"
+      },
+      {
+        text: data.incorrect + " incorrect",
+        className: "section-incorrect"
+      },
+      {
+        text: data.unanswered + " unanswered",
+        className: "section-unanswered"
+      }
+    ].forEach(function(item) {
+      const badge = document.createElement("span");
+      badge.className = "section-result-badge " + item.className;
+      badge.textContent = item.text;
+      details.appendChild(badge);
+    });
+
+    card.appendChild(details);
+    sectionContainer.appendChild(card);
+  });
+  }
+
+  if (reviewContainer) {
+    reviewContainer.replaceChildren();
+
+    const heading = document.createElement("h3");
+    heading.textContent = "Answer Review";
+    reviewContainer.appendChild(heading);
+
+    reviewItems.forEach(function(item) {
+      const question = item.question;
+      const type = getStudentQuestionType(question);
+      const block = document.createElement("div");
+      block.className = "answer-review-item";
+
+      const title = document.createElement("p");
+      title.textContent =
+        "Q" + getStudentDisplayQuestionNumber(
+          question,
+          item.index
+        ) + ". " + getStudentQuestionText(question);
+
+      block.appendChild(title);
+
+      const answerLine = document.createElement("p");
+
+      if (!item.answered) {
+        answerLine.textContent = "Your answer: Not answered";
+      } else if (item.correct === null) {
+        answerLine.textContent =
+          "Your answer: " +
+          (Array.isArray(item.answer)
+            ? item.answer.join(", ")
+            : String(item.answer)) +
+          " (Manual review needed)";
+      } else {
+        answerLine.textContent =
+          "Your answer: " +
+          (Array.isArray(item.answer)
+            ? item.answer.map(function(value) {
+                return question.options?.[Number(value)]?.text ??
+                  question.options?.[Number(value)] ??
+                  String.fromCharCode(65 + Number(value));
+              }).join(", ")
+            : type === "mcq"
+              ? String(
+                  question.options?.[Number(item.answer)]?.text ??
+                  question.options?.[Number(item.answer)] ??
+                  String.fromCharCode(65 + Number(item.answer))
+                )
+              : String(item.answer)) +
+          (item.correct ? " — Correct" : " — Incorrect");
+      }
+
+      block.appendChild(answerLine);
+
+      if (
+        type === "mcq" ||
+        type === "msq"
+      ) {
+        const correctAnswers = Array.isArray(question.correctAnswers)
+          ? question.correctAnswers
+          : [];
+
+        const correctLine = document.createElement("p");
+
+        correctLine.textContent =
+          "Correct answer: " +
+          correctAnswers.map(function(value) {
+            const option = question.options?.[Number(value)];
+            return typeof option === "object" && option !== null
+              ? String(option.text ?? option.value ?? "")
+              : String(option ?? "");
+          }).join(", ");
+
+        block.appendChild(correctLine);
+      } else if (type === "nat") {
+        const correctLine = document.createElement("p");
+        correctLine.textContent =
+          "Correct answer: " + String(question.natAnswer ?? "");
+        block.appendChild(correctLine);
+      }
+
+      if (question.explanation) {
+        const explanation = document.createElement("p");
+        explanation.textContent =
+          "Explanation: " + question.explanation;
+        block.appendChild(explanation);
+      }
+
+      reviewContainer.appendChild(block);
+    });
+  }
+
+  document.getElementById("testView").hidden = true;
+  document.getElementById("resultView").hidden = false;
+  document.getElementById("paletteToggle").hidden = true;
+  document.getElementById("palettePanel").hidden = true;
+  document.getElementById("paletteOverlay").hidden = true;
+
+  const reattemptBtn = document.getElementById("reattemptBtn");
+
+  if (reattemptBtn) {
+    reattemptBtn.hidden = false;
+    reattemptBtn.disabled = false;
+  }
+}
+
+// Manual Submit button: confirmation popup.
+document.getElementById("submitBtn").addEventListener(
+  "click",
+  function() {
+    submitStudentTest(false);
+  }
+);
+
+// Basic reattempt. Package-based attempt enforcement
+// will be connected when the package/backend rules are available.
+document.getElementById("reattemptBtn").addEventListener(
+  "click",
+  function() {
+    if (!StudentTest.submitted) return;
+
+    stopStudentTimer();
+
+    StudentTest.answers = {};
+    StudentTest.marked = {};
+    StudentTest.visited = {};
+    StudentTest.checkedMSQ = null;
+    StudentTest.currentIndex = 0;
+    StudentTest.submitted = false;
+    StudentTest.started = false;
+    StudentTest.remainingSeconds = 0;
+
+    const message = document.getElementById("saveMessage");
+    if (message) message.hidden = true;
+
+    document.getElementById("resultView").hidden = true;
+    document.getElementById("testView").hidden = true;
+    document.getElementById("introView").hidden = false;
+
+    const startButton = document.getElementById("startTestBtn");
+    if (startButton) {
+      startButton.textContent = "Start Test";
+    }
+
+    window.scrollTo(0, 0);
+  }
+);
+
+</script>
+
+</body>
+</html>

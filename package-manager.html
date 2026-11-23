@@ -1,0 +1,1164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>
+Package Manager | Biotechnology Questions
+</title>
+
+<style>
+
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+body{
+  font-family:Arial,sans-serif;
+  background:#f4f8f9;
+  color:#183b40;
+}
+
+.wrap{
+  width:92%;
+  max-width:1050px;
+  margin:24px auto 50px;
+}
+
+.top{
+  background:#123f46;
+  color:white;
+  padding:18px 20px;
+  border-radius:18px;
+
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+}
+
+.top h1{
+  font-size:22px;
+}
+
+.top p{
+  font-size:12px;
+  opacity:.8;
+  margin-top:4px;
+}
+
+.back{
+  border:0;
+  background:white;
+  color:#123f46;
+  padding:9px 13px;
+  border-radius:10px;
+  font-weight:700;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:1fr 1.15fr;
+  gap:18px;
+  margin-top:18px;
+}
+
+.card{
+  background:#fff;
+  border-radius:18px;
+  padding:20px;
+  box-shadow:
+    0 5px 18px rgba(0,0,0,.06);
+}
+
+h2{
+  font-size:18px;
+  margin-bottom:15px;
+}
+
+.field{
+  margin-bottom:13px;
+}
+
+.field label{
+  display:block;
+  font-size:13px;
+  font-weight:700;
+  margin-bottom:6px;
+}
+
+.field input,
+.field textarea,
+.field select{
+
+  width:100%;
+
+  padding:11px;
+
+  border:1px solid #d8e2e5;
+
+  border-radius:10px;
+
+  font:inherit;
+
+  outline:none;
+}
+
+.field textarea{
+  min-height:78px;
+  resize:vertical;
+}
+
+.field input:focus,
+.field textarea:focus,
+.field select:focus{
+  border-color:#197278;
+}
+
+.tests-box{
+  border:1px solid #dbe5e7;
+  border-radius:12px;
+  max-height:310px;
+  overflow:auto;
+}
+
+.test-row{
+  padding:10px 11px;
+  border-bottom:1px solid #edf1f2;
+}
+
+.test-row:last-child{
+  border-bottom:0;
+}
+
+.test-row label{
+  display:flex;
+  gap:9px;
+  align-items:flex-start;
+
+  font-size:13px;
+  line-height:1.4;
+}
+
+.test-meta{
+  color:#718096;
+  font-size:11px;
+  margin-top:3px;
+  margin-left:22px;
+}
+
+.actions{
+  display:flex;
+  gap:8px;
+  margin-top:15px;
+}
+
+.btn{
+  border:0;
+  border-radius:10px;
+  padding:10px 13px;
+  font-weight:700;
+  cursor:pointer;
+}
+
+.primary{
+  background:#123f46;
+  color:#fff;
+}
+
+.light{
+  background:#edf4f5;
+  color:#123f46;
+}
+
+.danger{
+  background:#fee2e2;
+  color:#b91c1c;
+}
+
+.search{
+  margin-bottom:9px;
+}
+
+.search input{
+  padding:10px;
+  width:100%;
+
+  border:1px solid #d8e2e5;
+
+  border-radius:10px;
+}
+
+.pkg{
+  border:1px solid #e2eaec;
+  border-radius:14px;
+  padding:14px;
+  margin-bottom:10px;
+}
+
+.pkg h3{
+  font-size:15px;
+}
+
+.muted{
+  color:#718096;
+  font-size:12px;
+  line-height:1.5;
+  margin-top:5px;
+}
+
+.pkg-actions{
+  display:flex;
+  gap:7px;
+  margin-top:10px;
+}
+
+.empty{
+  color:#718096;
+  font-size:13px;
+  padding:10px 0;
+}
+
+.badge{
+  display:inline-block;
+  padding:4px 8px;
+
+  border-radius:20px;
+
+  font-size:10px;
+  font-weight:700;
+
+  margin-top:6px;
+
+  background:#e8f4f2;
+  color:#17656b;
+}
+
+.badge.paid{
+  background:#fff0d9;
+  color:#9a5a00;
+}
+
+@media(max-width:760px){
+
+  .grid{
+    grid-template-columns:1fr;
+  }
+
+  .top{
+    align-items:flex-start;
+  }
+
+  .top h1{
+    font-size:19px;
+  }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="wrap">
+
+
+  <!-- HEADER -->
+
+  <div class="top">
+
+    <div>
+
+      <h1>
+        📦 Package Manager
+      </h1>
+
+      <p>
+        Create packages by selecting prepared tests.
+      </p>
+
+    </div>
+
+    <button
+      class="back"
+      onclick="location.href='admin-dashboard.html'">
+
+      ← Dashboard
+
+    </button>
+
+  </div>
+
+
+  <!-- MAIN -->
+
+  <div class="grid">
+
+
+    <!-- PACKAGE FORM -->
+
+    <section class="card">
+
+      <h2 id="formTitle">
+        Create Package
+      </h2>
+
+
+      <div class="field">
+
+        <label>
+          Package Name
+        </label>
+
+        <input
+          id="pkgName"
+          placeholder="e.g. GAT-B Biotechnology Pack">
+
+      </div>
+
+      <div class="field">
+
+        <label>
+          Description
+        </label>
+
+        <textarea
+          id="pkgDescription"
+          placeholder="Short description for students">
+        </textarea>
+
+      </div>
+
+      <div class="field">
+
+        <label>
+          Access
+        </label>
+
+        <select id="pkgAccess">
+
+          <option value="FREE">
+            Free
+          </option>
+
+          <option value="PAID">
+            Paid
+          </option>
+
+        </select>
+
+      </div>
+
+      <div class="field">
+
+        <label>
+          Price (₹)
+        </label>
+
+        <input
+          id="pkgPrice"
+          type="number"
+          min="0"
+          value="0">
+
+      </div>
+
+
+      <div class="field">
+
+        <label>
+          Attempts
+        </label>
+
+        <select id="pkgAttempts">
+
+          <option value="unlimited">
+            Unlimited
+          </option>
+
+          <option value="1">
+            1 Attempt
+          </option>
+
+          <option value="2">
+            2 Attempts
+          </option>
+
+          <option value="3">
+            3 Attempts
+          </option>
+
+          <option value="5">
+            5 Attempts
+          </option>
+
+          <option value="10">
+            10 Attempts
+          </option>
+
+        </select>
+
+      </div>
+
+
+      <div class="field">
+
+        <label>
+          Published
+        </label>
+
+        <select id="pkgPublished">
+
+          <option value="true">
+            Yes — show in Package List
+          </option>
+
+          <option value="false">
+            No — keep hidden
+          </option>
+
+        </select>
+
+      </div>
+
+      <div class="actions">
+
+        <button
+          class="btn primary"
+          id="saveBtn"
+          onclick="savePackage()">
+
+          + Add Package
+
+        </button>
+
+        <button
+          class="btn light"
+          onclick="clearForm()">
+
+          Clear
+
+        </button>
+
+      </div>
+
+    </section>
+
+    <!-- TEST SELECTOR -->
+
+    <section class="card">
+
+      <h2>
+        Select Tests
+      </h2>
+
+      <div class="search">
+
+        <input
+          id="testSearch"
+          placeholder="Search test name, exam or subject...">
+
+      </div>
+
+
+      <div
+        id="testsBox"
+        class="tests-box">
+      </div>
+
+    </section>
+
+  </div>
+  <!-- SAVED PACKAGES -->
+
+  <section
+    class="card"
+    style="margin-top:18px">
+
+    <h2>
+      Saved Packages
+    </h2>
+
+    <div id="packagesBox"></div>
+
+  
+  </section>
+
+</div>
+
+<script>
+
+const KEY =
+  "bq_packages";
+
+let editingId =
+  null;
+
+let selected =
+  new Set();
+
+
+function getTests(){
+
+  try{
+
+    return JSON.parse(
+      localStorage.getItem("bq_tests")
+      || "[]"
+    );
+
+  }catch(e){
+
+    return [];
+
+  }
+
+}
+
+
+function getPackages(){
+
+  try{
+
+    return JSON.parse(
+      localStorage.getItem(KEY)
+      || "[]"
+    );
+
+  }catch(e){
+
+    return [];
+
+  }
+
+}
+
+
+function esc(v){
+
+  return String(v ?? "")
+
+    .replace(/&/g,"&amp;")
+
+    .replace(/</g,"&lt;")
+
+    .replace(/>/g,"&gt;")
+
+    .replace(/"/g,"&quot;")
+
+    .replace(/'/g,"&#39;");
+
+}
+
+
+function renderTests(){
+
+  const search =
+    document.getElementById(
+      "testSearch"
+    );
+
+  const q =
+    search.value
+      .toLowerCase()
+      .trim();
+
+
+  const all =
+    getTests().filter(function(t){
+
+      return (
+
+        `${t.name || ""} ` +
+        `${t.exam || ""} ` +
+        `${t.subject || ""}`
+
+      )
+      .toLowerCase()
+      .includes(q);
+
+    });
+
+
+  const box =
+    document.getElementById(
+      "testsBox"
+    );
+
+
+  if(!all.length){
+
+    box.innerHTML =
+      '<div class="empty">' +
+      'No prepared tests found. ' +
+      'Create tests first in Test Manager.' +
+      '</div>';
+
+    return;
+
+  }
+
+
+  box.innerHTML =
+    all.map(function(t){
+
+      const title =
+        t.name ||
+        "Untitled Test";
+
+
+      const meta =
+        [
+          t.exam,
+          t.subject,
+          t.type
+        ]
+        .filter(Boolean)
+        .join(" • ");
+
+
+      return `
+
+        <div class="test-row">
+
+          <label>
+
+            <input
+              type="checkbox"
+              value="${esc(t.id)}"
+              ${selected.has(t.id)
+                ? "checked"
+                : ""}
+              onchange="
+                toggleTest(
+                  this.value,
+                  this.checked
+                )
+              ">
+
+            <span>
+
+              <b>
+                ${esc(title)}
+              </b>
+
+              <div class="test-meta">
+
+                ${esc(meta)}
+
+                ${
+                  t.questions?.length != null
+                    ? " • " +
+                      t.questions.length +
+                      " Questions"
+                    : ""
+                }
+
+              </div>
+
+            </span>
+
+          </label>
+
+        </div>
+
+      `;
+
+    })
+    .join("");
+
+}
+
+
+function toggleTest(id,on){
+
+  if(on){
+
+    selected.add(id);
+
+  }else{
+
+    selected.delete(id);
+
+  }
+
+}
+
+
+function clearForm(){
+
+  editingId =
+    null;
+
+  selected.clear();
+
+
+  [
+    "pkgName",
+    "pkgDescription"
+  ]
+  .forEach(function(id){
+
+    document.getElementById(
+      id
+    ).value = "";
+
+  });
+
+
+  document.getElementById(
+    "pkgAccess"
+  ).value =
+    "FREE";
+
+
+  document.getElementById(
+    "pkgPrice"
+  ).value =
+    "0";
+
+
+  document.getElementById(
+    "pkgAttempts"
+  ).value =
+    "unlimited";
+
+
+  document.getElementById(
+    "pkgPublished"
+  ).value =
+    "true";
+
+
+  document.getElementById(
+    "formTitle"
+  ).textContent =
+    "Create Package";
+
+
+  document.getElementById(
+    "saveBtn"
+  ).textContent =
+    "+ Add Package";
+
+
+  renderTests();
+
+}
+
+
+function savePackage(){
+
+  const name =
+    document.getElementById(
+      "pkgName"
+    ).value.trim();
+
+
+  if(!name){
+
+    alert(
+      "Enter a package name."
+    );
+
+    return;
+
+  }
+
+
+  if(!selected.size){
+
+    alert(
+      "Select at least one test."
+    );
+
+    return;
+
+  }
+
+
+  const access =
+    document.getElementById(
+      "pkgAccess"
+    ).value;
+
+
+  const price =
+    Number(
+      document.getElementById(
+        "pkgPrice"
+      ).value || 0
+    );
+
+
+  if(
+    access === "PAID" &&
+    price <= 0
+  ){
+
+    alert(
+      "Enter a price for a paid package."
+    );
+
+    return;
+
+  }
+
+
+  const packages =
+    getPackages();
+
+
+  const oldPackage =
+    editingId
+      ? packages.find(
+          p => p.id === editingId
+        )
+      : null;
+
+
+  const item = {
+
+    id:
+      editingId ||
+      "PKG_" +
+      Date.now(),
+
+    name:
+
+      name,
+
+    description:
+
+      document.getElementById(
+        "pkgDescription"
+      ).value.trim(),
+
+    testIds:
+
+      [...selected],
+
+    access:
+
+      access,
+
+    price:
+
+      access === "PAID"
+        ? price
+        : 0,
+
+    attempts:
+
+      document.getElementById(
+        "pkgAttempts"
+      ).value,
+
+    published:
+
+      document.getElementById(
+        "pkgPublished"
+      ).value === "true",
+
+    createdAt:
+
+      oldPackage?.createdAt ||
+      new Date().toISOString(),
+
+    updatedAt:
+
+      new Date().toISOString()
+
+  };
+
+
+  const index =
+    packages.findIndex(
+      p => p.id === item.id
+    );
+
+
+  if(index >= 0){
+
+    packages[index] =
+      item;
+
+  }else{
+
+    packages.push(item);
+
+  }
+
+
+  localStorage.setItem(
+    KEY,
+    JSON.stringify(packages)
+  );
+
+
+  alert(
+    editingId
+      ? "Package updated."
+      : "Package added."
+  );
+
+
+  clearForm();
+
+  renderPackages();
+
+}
+
+
+function editPackage(id){
+
+  const p =
+    getPackages().find(
+      x => x.id === id
+    );
+
+
+  if(!p) return;
+
+
+  editingId =
+    id;
+
+
+  selected =
+    new Set(
+      p.testIds || []
+    );
+
+
+  document.getElementById(
+    "pkgName"
+  ).value =
+    p.name || "";
+
+
+  document.getElementById(
+    "pkgDescription"
+  ).value =
+    p.description || "";
+
+
+  document.getElementById(
+    "pkgAccess"
+  ).value =
+    p.access || "FREE";
+
+
+  document.getElementById(
+    "pkgPrice"
+  ).value =
+    p.price || 0;
+
+
+  document.getElementById(
+    "pkgAttempts"
+  ).value =
+    p.attempts ||
+    "unlimited";
+
+
+  document.getElementById(
+    "pkgPublished"
+  ).value =
+    p.published === false
+      ? "false"
+      : "true";
+
+
+  document.getElementById(
+    "formTitle"
+  ).textContent =
+    "Edit Package";
+
+
+  document.getElementById(
+    "saveBtn"
+  ).textContent =
+    "💾 Update Package";
+
+
+  renderTests();
+
+
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
+
+}
+
+
+function deletePackage(id){
+
+  if(
+    !confirm(
+      "Delete this package?"
+    )
+  ){
+
+    return;
+
+  }
+
+
+  localStorage.setItem(
+
+    KEY,
+
+    JSON.stringify(
+      getPackages().filter(
+        p => p.id !== id
+      )
+    )
+
+  );
+
+  renderPackages();
+
+}
+
+function renderPackages(){
+
+  const box =
+    document.getElementById(
+      "packagesBox"
+    );
+
+
+  const list =
+    getPackages();
+
+
+  if(!list.length){
+
+    box.innerHTML =
+      '<div class="empty">' +
+      'No packages created yet.' +
+      '</div>';
+
+    return;
+
+  }
+  box.innerHTML =
+    list.map(function(p){
+
+      const count =
+        (p.testIds || [])
+        .length;
+
+
+      const label =
+        p.access === "PAID"
+          ? "Paid ₹" + p.price
+          : "Free";
+
+
+      const attempts =
+        p.attempts === "unlimited"
+          ? "Unlimited attempts"
+          : p.attempts +
+            " attempt(s)";
+
+
+      return `
+
+        <div class="pkg">
+
+          <h3>
+            ${esc(p.name)}
+          </h3>
+
+          <div class="muted">
+
+            ${esc(
+              p.description ||
+              "No description"
+            )}
+
+            <br>
+
+            ${count} Test(s)
+            • ${label}
+            • ${attempts}
+
+          </div>
+
+
+          <span
+            class="badge
+            ${p.access === "PAID"
+              ? "paid"
+              : ""}">
+
+            ${
+              p.published === false
+                ? "Hidden"
+                : "Published"
+            }
+
+          </span>
+
+
+          <div class="pkg-actions">
+
+            <button
+              class="btn light"
+              onclick="
+                editPackage(
+                  '${esc(p.id)}'
+                )
+              ">
+
+              Edit
+
+            </button>
+
+
+            <button
+              class="btn danger"
+              onclick="
+                deletePackage(
+                  '${esc(p.id)}'
+                )
+              ">
+
+              Delete
+
+            </button>
+
+          </div>
+
+        </div>
+
+      `;
+
+    })
+    .join("");
+
+}
+
+document
+  .getElementById("testSearch")
+  .addEventListener(
+    "input",
+    renderTests
+  );
+renderTests();
+renderPackages();
+
+</script>
+</body>
+</html>

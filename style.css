@@ -1,0 +1,859 @@
+/* =========================================
+   BIOTECHNOLOGY QUESTIONS
+   MAIN WEBSITE STYLES
+========================================= */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #f5faf9;
+  color: #123b52;
+  line-height: 1.6;
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 16px 6%;
+
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(14px);
+
+  border-bottom: 1px solid #dcebea;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.brand-logo {
+  width: 46px;
+  height: 46px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 14px;
+
+  background: linear-gradient(
+    135deg,
+    #0d9488,
+    #0f5f78
+  );
+
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+
+  box-shadow: 0 8px 20px rgba(13, 148, 136, 0.22);
+}
+
+.brand-text h1 {
+  font-size: 19px;
+  color: #123b52;
+}
+
+.brand-text p {
+  font-size: 12px;
+  color: #64818c;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.header-whatsapp,
+.admin-button {
+  border: none;
+  text-decoration: none;
+
+  padding: 10px 16px;
+  border-radius: 10px;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+.header-whatsapp {
+  color: #087f5b;
+  background: #e7f8f1;
+}
+
+.admin-button {
+  color: white;
+  background: #123b52;
+}
+
+.header-whatsapp:hover,
+.admin-button:hover {
+  transform: translateY(-2px);
+}
+
+
+/* =========================================
+   HERO
+========================================= */
+
+.hero-section {
+  position: relative;
+  overflow: hidden;
+
+  min-height: 570px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 50px;
+
+  padding: 80px 8%;
+
+  background:
+    radial-gradient(
+      circle at 80% 30%,
+      rgba(45, 212, 191, 0.20),
+      transparent 28%
+    ),
+    linear-gradient(
+      135deg,
+      #082f49,
+      #0f4c5c 55%,
+      #087f7b
+    );
+
+  color: white;
+}
+
+.hero-content {
+  max-width: 620px;
+  position: relative;
+  z-index: 2;
+}
+
+.hero-badge {
+  display: inline-block;
+
+  padding: 8px 14px;
+  margin-bottom: 20px;
+
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 30px;
+
+  background: rgba(255, 255, 255, 0.10);
+
+  font-size: 13px;
+}
+
+.hero-content h2 {
+  font-size: clamp(42px, 6vw, 68px);
+  line-height: 1.08;
+
+  margin-bottom: 22px;
+
+  letter-spacing: -2px;
+}
+
+.hero-content h2 span {
+  color: #7ee7d7;
+}
+
+.hero-content > p {
+  max-width: 570px;
+
+  color: #d9eeee;
+  font-size: 17px;
+  line-height: 1.8;
+
+  margin-bottom: 30px;
+}
+
+.hero-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.primary-btn,
+.secondary-btn {
+  padding: 14px 21px;
+
+  border-radius: 12px;
+
+  font-size: 15px;
+  font-weight: bold;
+
+  cursor: pointer;
+
+  transition: 0.25s;
+}
+
+.primary-btn {
+  border: none;
+
+  background: white;
+  color: #0f5964;
+}
+
+.secondary-btn {
+  border: 1px solid rgba(255, 255, 255, 0.35);
+
+  background: rgba(255, 255, 255, 0.08);
+  color: white;
+}
+
+.primary-btn:hover,
+.secondary-btn:hover {
+  transform: translateY(-3px);
+}
+
+
+/* =========================================
+   HERO DNA VISUAL
+========================================= */
+
+.hero-visual {
+  width: 350px;
+  height: 350px;
+
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+}
+
+.dna-symbol {
+  width: 155px;
+  height: 155px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+
+  font-size: 76px;
+
+  box-shadow:
+    0 0 50px rgba(126, 231, 215, 0.18),
+    inset 0 0 35px rgba(255, 255, 255, 0.06);
+
+  animation: dnaFloat 4s ease-in-out infinite;
+
+  z-index: 3;
+}
+
+.dna-orbit {
+  position: absolute;
+
+  border: 1px solid rgba(126, 231, 215, 0.35);
+
+  border-radius: 50%;
+}
+
+.orbit-one {
+  width: 270px;
+  height: 150px;
+
+  transform: rotate(30deg);
+
+  animation: orbitSpin 10s linear infinite;
+}
+
+.orbit-two {
+  width: 270px;
+  height: 150px;
+
+  transform: rotate(-30deg);
+
+  animation: orbitSpinReverse 10s linear infinite;
+}
+
+.hero-floating-card {
+  position: absolute;
+
+  padding: 10px 15px;
+
+  border-radius: 12px;
+
+  background: rgba(255, 255, 255, 0.94);
+  color: #123b52;
+
+  font-size: 13px;
+  font-weight: bold;
+
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.16);
+
+  z-index: 4;
+}
+
+.card-one {
+  top: 35px;
+  left: 5px;
+}
+
+.card-two {
+  right: 0;
+  top: 135px;
+}
+
+.card-three {
+  bottom: 35px;
+  left: 45px;
+}
+
+@keyframes dnaFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+@keyframes orbitSpin {
+  from {
+    transform: rotate(30deg);
+  }
+
+  to {
+    transform: rotate(390deg);
+  }
+}
+
+@keyframes orbitSpinReverse {
+  from {
+    transform: rotate(-30deg);
+  }
+
+  to {
+    transform: rotate(-390deg);
+  }
+}
+
+
+/* =========================================
+   COMMON SECTION
+========================================= */
+
+.main-options,
+.recent-section,
+.community-section {
+  padding: 85px 7%;
+}
+
+.section-heading {
+  max-width: 720px;
+  margin: 0 auto 42px;
+
+  text-align: center;
+}
+
+.section-label {
+  display: inline-block;
+
+  margin-bottom: 10px;
+
+  color: #0d9488;
+
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 1.5px;
+}
+
+.section-heading h2 {
+  margin-bottom: 10px;
+
+  color: #123b52;
+
+  font-size: 34px;
+  line-height: 1.2;
+}
+
+.section-heading p {
+  color: #69828b;
+}
+
+
+/* =========================================
+   OPTION CARDS
+========================================= */
+
+.option-grid {
+  max-width: 1150px;
+  margin: auto;
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 22px;
+}
+
+.option-card {
+  position: relative;
+
+  padding: 28px;
+
+  border-radius: 22px;
+
+  background: white;
+
+  border: 1px solid #dcebea;
+
+  box-shadow: 0 12px 35px rgba(18, 59, 82, 0.07);
+
+  transition:
+    transform 0.25s,
+    box-shadow 0.25s;
+}
+
+.option-card:hover {
+  transform: translateY(-8px);
+
+  box-shadow: 0 20px 45px rgba(18, 59, 82, 0.12);
+}
+
+.practice-card {
+  border-top: 4px solid #0d9488;
+}
+
+.mock-card {
+  border-top: 4px solid #3b82f6;
+}
+
+.pyq-card {
+  border-top: 4px solid #8b5cf6;
+}
+
+.card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: 22px;
+}
+
+.option-icon {
+  width: 55px;
+  height: 55px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 16px;
+
+  font-size: 27px;
+}
+
+.practice-card .option-icon {
+  background: #e5f8f4;
+}
+
+.mock-card .option-icon {
+  background: #eaf2ff;
+}
+
+.pyq-card .option-icon {
+  background: #f1ebff;
+}
+
+.mode-tag {
+  padding: 6px 9px;
+
+  border-radius: 20px;
+
+  font-size: 10px;
+  font-weight: bold;
+  letter-spacing: 0.8px;
+
+  background: #f1f5f6;
+  color: #607982;
+}
+
+.option-card h3 {
+  margin-bottom: 12px;
+
+  color: #123b52;
+  font-size: 23px;
+}
+
+.option-card > p {
+  min-height: 125px;
+
+  color: #6a828b;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.card-features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+
+  margin: 18px 0 23px;
+}
+
+.card-features span {
+  padding: 6px 9px;
+
+  border-radius: 8px;
+
+  background: #f5f9f9;
+
+  color: #58717a;
+
+  font-size: 11px;
+}
+
+.card-link {
+  border: none;
+  background: transparent;
+
+  color: #087f7b;
+
+  font-size: 14px;
+  font-weight: bold;
+
+  cursor: pointer;
+}
+
+.mock-card .card-link {
+  color: #2563eb;
+}
+
+.pyq-card .card-link {
+  color: #7c3aed;
+}
+
+
+/* =========================================
+   RECENT TESTS
+========================================= */
+
+.recent-section {
+  background: #eef7f6;
+}
+
+.recent-tests {
+  max-width: 850px;
+  margin: auto;
+}
+
+.empty-test-state {
+  padding: 45px 25px;
+
+  text-align: center;
+
+  background: white;
+
+  border: 1px dashed #c7dddd;
+  border-radius: 20px;
+}
+
+.empty-icon {
+  margin-bottom: 10px;
+
+  font-size: 38px;
+}
+
+.empty-test-state h3 {
+  margin-bottom: 7px;
+
+  color: #123b52;
+}
+
+.empty-test-state p {
+  max-width: 500px;
+  margin: auto;
+
+  color: #71878e;
+  font-size: 14px;
+}
+
+
+/* =========================================
+   WHATSAPP COMMUNITY
+========================================= */
+
+.community-section {
+  background: white;
+}
+
+.community-card {
+  max-width: 1050px;
+  margin: auto;
+
+  display: flex;
+  align-items: center;
+  gap: 25px;
+
+  padding: 35px;
+
+  border-radius: 24px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #e7f9f3,
+      #f2fbfa
+    );
+
+  border: 1px solid #cfe8e3;
+}
+
+.community-icon {
+  width: 65px;
+  height: 65px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  border-radius: 18px;
+
+  background: #d5f4e8;
+
+  font-size: 30px;
+}
+
+.community-content {
+  flex: 1;
+}
+
+.community-content h2 {
+  margin-bottom: 7px;
+
+  color: #123b52;
+  font-size: 25px;
+}
+
+.community-content p {
+  color: #65808a;
+  font-size: 14px;
+}
+
+.whatsapp-btn {
+  flex-shrink: 0;
+
+  padding: 13px 18px;
+
+  border-radius: 11px;
+
+  background: #087f5b;
+  color: white;
+
+  text-decoration: none;
+
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.whatsapp-btn:hover {
+  transform: translateY(-2px);
+}
+
+
+/* =========================================
+   FOOTER
+========================================= */
+
+.site-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 20px;
+
+  padding: 30px 7%;
+
+  background: #082f49;
+
+  color: #c9dfe5;
+}
+
+.site-footer strong {
+  color: white;
+}
+
+.site-footer p {
+  margin-top: 4px;
+
+  font-size: 12px;
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 900px) {
+
+  .hero-section {
+    padding: 65px 7%;
+
+    flex-direction: column;
+
+    text-align: center;
+  }
+
+  .hero-content {
+    max-width: 700px;
+  }
+
+  .hero-buttons {
+    justify-content: center;
+  }
+
+  .hero-visual {
+    width: 310px;
+    height: 310px;
+  }
+
+  .option-grid {
+    grid-template-columns: 1fr;
+    max-width: 600px;
+  }
+
+  .option-card > p {
+    min-height: auto;
+  }
+
+}
+
+
+@media (max-width: 650px) {
+
+  .site-header {
+    padding: 12px 5%;
+  }
+
+  .brand-logo {
+    width: 40px;
+    height: 40px;
+  }
+
+  .brand-text h1 {
+    font-size: 15px;
+  }
+
+  .brand-text p {
+    font-size: 10px;
+  }
+
+  .header-whatsapp {
+    display: none;
+  }
+
+  .admin-button {
+    padding: 9px 12px;
+    font-size: 12px;
+  }
+
+  .hero-section {
+    min-height: auto;
+    padding: 55px 6%;
+  }
+
+  .hero-content h2 {
+    font-size: 40px;
+    letter-spacing: -1px;
+  }
+
+  .hero-content > p {
+    font-size: 14px;
+  }
+
+  .hero-visual {
+    width: 280px;
+    height: 280px;
+  }
+
+  .dna-symbol {
+    width: 125px;
+    height: 125px;
+    font-size: 60px;
+  }
+
+  .orbit-one,
+  .orbit-two {
+    width: 230px;
+    height: 125px;
+  }
+
+  .hero-floating-card {
+    font-size: 11px;
+    padding: 8px 11px;
+  }
+
+  .main-options,
+  .recent-section,
+  .community-section {
+    padding: 60px 5%;
+  }
+
+  .section-heading h2 {
+    font-size: 28px;
+  }
+
+  .option-card {
+    padding: 23px;
+  }
+
+  .community-card {
+    flex-direction: column;
+    text-align: center;
+    padding: 28px 20px;
+  }
+
+  .community-content h2 {
+    font-size: 22px;
+  }
+
+  .whatsapp-btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  .site-footer {
+    flex-direction: column;
+    text-align: center;
+  }
+
+}

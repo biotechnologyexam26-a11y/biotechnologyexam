@@ -1,0 +1,1115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+  <title>Admin Dashboard | Biotechnology Questions</title>
+
+  <style>
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f8f9;
+      color: #183b40;
+    }
+
+    /* HEADER */
+
+    .admin-header {
+      background: #123f46;
+      color: white;
+      padding: 16px 5%;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      gap: 15px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-logo {
+      width: 42px;
+      height: 42px;
+
+      border-radius: 12px;
+
+      background: white;
+      color: #123f46;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      font-weight: bold;
+    }
+
+    .brand h2 {
+      font-size: 18px;
+    }
+
+    .brand p {
+      font-size: 12px;
+      opacity: 0.75;
+      margin-top: 3px;
+    }
+
+    .header-buttons {
+      display: flex;
+      gap: 8px;
+    }
+
+    .header-buttons button {
+      border: none;
+      border-radius: 9px;
+
+      padding: 9px 13px;
+
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    .website-btn {
+      background: white;
+      color: #123f46;
+    }
+
+    .logout-btn {
+      background: #ef4444;
+      color: white;
+    }
+
+    /* DASHBOARD */
+
+    .dashboard {
+      width: 92%;
+      max-width: 1180px;
+
+      margin: 30px auto;
+    }
+
+    .welcome {
+      background: linear-gradient(
+        135deg,
+        #123f46,
+        #197278
+      );
+
+      color: white;
+
+      padding: 28px;
+      border-radius: 20px;
+
+      margin-bottom: 25px;
+    }
+
+    .welcome h1 {
+      font-size: 28px;
+      margin-bottom: 8px;
+    }
+
+    .welcome p {
+      opacity: 0.85;
+      margin-bottom: 18px;
+    }
+
+    .create-btn {
+      border: none;
+
+      background: white;
+      color: #123f46;
+
+      padding: 11px 18px;
+
+      border-radius: 10px;
+
+      font-weight: bold;
+      cursor: pointer;
+    }
+    /* STATS */
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 15px;
+      margin-bottom: 30px;
+    }
+
+    .stat-card {
+      background: white;
+      padding: 20px;
+      border-radius: 16px;
+      box-shadow: 0 5px 18px rgba(0,0,0,0.06);
+    }
+
+    .stat-card span {
+      font-size: 28px;
+    }
+
+    .stat-card h3 {
+      font-size: 25px;
+      margin-top: 8px;
+    }
+
+    .stat-card p {
+      color: #718096;
+      font-size: 13px;
+      margin-top: 4px;
+    }
+
+    /* MANAGEMENT */
+
+    .section-title {
+      margin-bottom: 15px;
+    }
+
+    .section-title h2 {
+      font-size: 21px;
+    }
+
+    .section-title p {
+      color: #718096;
+      font-size: 13px;
+      margin-top: 4px;
+    }
+
+    .management-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .management-card {
+      background: white;
+      padding: 22px;
+      border-radius: 18px;
+      cursor: pointer;
+      box-shadow: 0 5px 18px rgba(0,0,0,0.06);
+      transition: 0.2s;
+    }
+
+    .management-card:hover {
+      transform: translateY(-3px);
+    }
+
+    .management-icon {
+      font-size: 32px;
+      margin-bottom: 12px;
+    }
+
+    .management-card h4 {
+      font-size: 17px;
+      margin-bottom: 7px;
+    }
+
+    .management-card p {
+      color: #718096;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+        /* MOBILE */
+
+    @media (max-width: 800px) {
+
+      .stats {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .management-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+    }
+
+    @media (max-width: 520px) {
+
+      .admin-header {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .header-buttons {
+        width: 100%;
+      }
+
+      .header-buttons button {
+        flex: 1;
+      }
+
+      .welcome h1 {
+        font-size: 23px;
+      }
+
+      .stats {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .management-grid {
+        grid-template-columns: 1fr;
+      }
+
+    }
+        /* SECURITY POPUP */
+
+    .security-modal {
+      display: none;
+
+      position: fixed;
+      inset: 0;
+
+      z-index: 9999;
+
+      background: rgba(0, 0, 0, 0.65);
+
+      align-items: center;
+      justify-content: center;
+
+      padding: 20px;
+    }
+
+    .security-box {
+      width: 100%;
+      max-width: 430px;
+
+      background: white;
+
+      border-radius: 22px;
+
+      padding: 28px;
+
+      position: relative;
+
+      box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+    }
+
+    .security-close {
+      position: absolute;
+
+      top: 14px;
+      right: 16px;
+
+      width: 34px;
+      height: 34px;
+
+      border: none;
+
+      border-radius: 50%;
+
+      background: #f1f5f9;
+
+      font-size: 22px;
+
+      cursor: pointer;
+    }
+
+    .security-icon {
+      font-size: 42px;
+      margin-bottom: 8px;
+    }
+
+    .security-box h2 {
+      color: #123f46;
+      margin-bottom: 6px;
+    }
+
+    .security-subtitle {
+      color: #64748b;
+      margin-bottom: 22px;
+    }
+
+    .security-box label {
+      display: block;
+
+      margin: 15px 0 7px;
+
+      font-weight: 600;
+
+      color: #334155;
+    }
+
+    .security-box input {
+      width: 100%;
+
+      padding: 13px;
+
+      border: 1px solid #dbe4e8;
+
+      border-radius: 12px;
+
+      outline: none;
+
+      font-size: 14px;
+    }
+
+    .security-box input:focus {
+      border-color: #197278;
+    }
+
+    #passwordMessage {
+      min-height: 20px;
+
+      margin-top: 12px;
+
+      font-size: 13px;
+    }
+
+    .change-password-btn {
+      width: 100%;
+
+      margin-top: 10px;
+
+      padding: 13px;
+
+      border: none;
+
+      border-radius: 12px;
+
+      background: #123f46;
+
+      color: white;
+
+      font-weight: 700;
+
+      cursor: pointer;
+    }
+
+    .change-password-btn:hover {
+      background: #197278;
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <!-- HEADER -->
+
+  <header class="admin-header">
+
+    <div class="brand">
+
+      <div class="brand-logo">
+        BQ
+      </div>
+
+      <div>
+        <h2>Biotechnology Questions</h2>
+        <p>Admin Dashboard</p>
+      </div>
+
+    </div>
+
+    <div class="header-buttons">
+
+      <button
+        class="website-btn"
+        onclick="goWebsite()">
+        🌐 Website
+      </button>
+
+      <button
+        class="logout-btn"
+        onclick="logoutAdmin()">
+        Logout
+      </button>
+
+    </div>
+
+  </header>
+
+  <!-- MAIN DASHBOARD -->
+
+  <main class="dashboard">
+
+    <section class="welcome">
+
+      <h1>
+        Welcome, Admin 👋
+      </h1>
+
+      <p>
+        Manage tests, questions, packages and
+        website settings from one place.
+      </p>
+
+      <button
+        class="create-btn"
+        onclick="createTest()">
+
+        + Create New Test
+
+      </button>
+
+    </section>
+<!-- STATS -->
+
+<section class="stats">
+
+  <div class="stat-card">
+    <span>📝</span>
+    <h3 id="totalTests">0</h3>
+    <p>Total Tests</p>
+  </div>
+
+  <div class="stat-card">
+    <span>❓</span>
+    <h3 id="totalQuestions">0</h3>
+    <p>Total Questions</p>
+  </div>
+
+  <div class="stat-card">
+    <span>📦</span>
+    <h3 id="totalPackages">0</h3>
+    <p>Packages</p>
+  </div>
+
+  <div class="stat-card">
+    <span>📚</span>
+    <h3 id="totalPYQs">0</h3>
+    <p>PYQs</p>
+  </div>
+
+</section>
+    <!-- MANAGEMENT -->
+
+<section class="management-section">
+
+  <div class="section-title">
+    <h2>Management</h2>
+    <p>Manage your website content and settings</p>
+  </div>
+
+  <div class="management-grid">
+
+    <!-- TEST MANAGER -->
+    <div class="management-card"
+         onclick="openManager('tests')">
+
+      <div class="management-icon">📝</div>
+
+      <h4>Test Manager</h4>
+
+      <p>
+        Create, edit, publish and manage
+        your practice and mock tests.
+      </p>
+
+    </div>
+
+
+    <!-- ALL PREPARED TESTS -->
+    <div class="management-card"
+         onclick="openManager('all-tests')">
+
+      <div class="management-icon">📋</div>
+
+      <h4>All Prepared Tests</h4>
+
+      <p>
+        View, search, edit, copy and
+        manage all prepared tests.
+      </p>
+
+    </div>
+
+    <!-- PACKAGE MANAGER -->
+    <div class="management-card"
+         onclick="openManager('packages')">
+
+      <div class="management-icon">📦</div>
+
+      <h4>Package Manager</h4>
+
+      <p>
+        Create, edit and manage
+        test packages.
+      </p>
+
+    </div>
+
+    <!-- PACKAGE LIST -->
+    <div class="management-card"
+         onclick="openManager('package-list')">
+
+      <div class="management-icon">🛍️</div>
+
+      <h4>Package List</h4>
+
+      <p>
+        Preview the packages students
+        will see on the website.
+      </p>
+
+    </div>
+
+
+    <!-- PAYMENT -->
+    <div class="management-card"
+         onclick="openManager('payment')">
+
+      <div class="management-icon">💳</div>
+
+      <h4>Payment Settings</h4>
+
+      <p>
+        Manage UPI, QR code and
+        payment instructions.
+      </p>
+
+    </div>
+
+    <!-- SECURITY -->
+    <div class="management-card"
+         onclick="openSecurity()">
+
+      <div class="management-icon">🔐</div>
+
+      <h4>Security & Access</h4>
+
+      <p>
+        Manage dashboard access
+        and security settings.
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+  </main>
+<!-- SECURITY POPUP -->
+
+<div class="security-modal" id="securityModal">
+
+  <div class="security-box">
+
+    <button
+      class="security-close"
+      type="button"
+      onclick="closeSecurity()">
+      ×
+    </button>
+
+    <div class="security-icon">
+      🔐
+    </div>
+
+    <h2>Security & Access</h2>
+
+    <p class="security-subtitle">
+      Change the password used to access the Admin Dashboard.
+    </p>
+
+    <form id="passwordForm">
+
+      <label for="currentPassword">
+        Current Password
+      </label>
+
+      <input
+        type="password"
+        id="currentPassword"
+        placeholder="Enter current password"
+        required
+      >
+
+      <label for="newPassword">
+        New Password
+      </label>
+
+      <input
+        type="password"
+        id="newPassword"
+        placeholder="Enter new password"
+        minlength="8"
+        required
+      >
+
+      <label for="confirmPassword">
+        Confirm New Password
+      </label>
+
+      <input
+        type="password"
+        id="confirmPassword"
+        placeholder="Re-enter new password"
+        minlength="8"
+        required
+      >
+
+      <div id="passwordMessage"></div>
+
+      <button
+        type="submit"
+        class="change-password-btn">
+        🔑 Change Password
+      </button>
+
+    </form>
+
+  </div>
+
+</div>
+<>
+<script>
+
+/* =========================================
+   SECURITY CHECK
+   Run this FIRST
+========================================= */
+
+function checkAdminAccess() {
+
+  const isLoggedIn =
+    sessionStorage.getItem("bq_admin_logged_in");
+
+  if (isLoggedIn !== "true") {
+
+    window.location.replace("admin.html");
+
+    return false;
+  }
+
+  return true;
+}
+
+
+/* =========================================
+   STOP UNAUTHORIZED ACCESS
+========================================= */
+
+if (!checkAdminAccess()) {
+
+  throw new Error(
+    "Admin access required."
+  );
+
+}
+
+
+/* =========================================
+   DASHBOARD LIVE COUNTS
+========================================= */
+
+function updateDashboardCounts() {
+
+  let tests = [];
+
+  try {
+
+    tests = JSON.parse(
+      localStorage.getItem("bq_tests") || "[]"
+    );
+
+    if (!Array.isArray(tests)) {
+      tests = [];
+    }
+
+  } catch (error) {
+
+    tests = [];
+
+  }
+
+
+  /* TOTAL TESTS */
+
+  document.getElementById("totalTests").textContent =
+    tests.length;
+
+
+  /* TOTAL QUESTIONS */
+
+  let questionCount = 0;
+
+  tests.forEach(function(test) {
+
+    if (!test || typeof test !== "object") {
+      return;
+    }
+
+
+    if (Array.isArray(test.questions)) {
+
+      questionCount +=
+        test.questions.length;
+
+    }
+
+
+    if (Array.isArray(test.sections)) {
+
+      test.sections.forEach(function(section) {
+
+        if (
+          section &&
+          Array.isArray(section.questions)
+        ) {
+
+          questionCount +=
+            section.questions.length;
+
+        }
+
+      });
+
+    }
+
+  });
+
+
+  document.getElementById("totalQuestions").textContent =
+    questionCount;
+
+
+  /* TOTAL PYQs */
+
+  let pyqCount = 0;
+
+  tests.forEach(function(test) {
+
+    if (!test || typeof test !== "object") {
+      return;
+    }
+
+    if (
+      test.type &&
+      String(test.type).toUpperCase() === "PYQ"
+    ) {
+
+      pyqCount++;
+
+    }
+
+  });
+
+
+  document.getElementById("totalPYQs").textContent =
+    pyqCount;
+
+
+  /* GET PACKAGES */
+
+  let packages = [];
+
+  try {
+
+    packages = JSON.parse(
+      localStorage.getItem("bq_packages") || "[]"
+    );
+
+    if (!Array.isArray(packages)) {
+      packages = [];
+    }
+
+  } catch (error) {
+
+    packages = [];
+
+  }
+
+
+  document.getElementById("totalPackages").textContent =
+    packages.length;
+
+}
+
+
+/* =========================================
+   LOGOUT
+========================================= */
+
+function logoutAdmin() {
+
+  sessionStorage.removeItem(
+    "bq_admin_logged_in"
+  );
+
+  window.location.replace("admin.html");
+
+}
+
+
+/* =========================================
+   WEBSITE
+========================================= */
+
+function goWebsite() {
+
+  window.location.href =
+    "index.html";
+
+}
+
+
+/* =========================================
+   CREATE NEW TEST
+========================================= */
+
+function createTest() {
+
+  window.location.href =
+    "test-manager2.html";
+
+}
+
+
+/* =========================================
+   MANAGEMENT
+========================================= */
+
+function openManager(type) {
+
+
+  if (type === "tests") {
+
+    window.location.href =
+      "test-manager2.html";
+
+  }
+
+
+  else if (type === "all-tests") {
+
+    window.location.href =
+      "all-prepared-tests.html";
+
+  }
+
+
+  else if (type === "packages") {
+
+    window.location.href =
+      "package-manager.html";
+
+  }
+
+
+  else if (type === "package-list") {
+
+    window.location.href =
+      "package-list.html";
+
+  }
+
+
+  else if (type === "payment") {
+
+    alert(
+      "Payment Settings will open here."
+    );
+
+  }
+
+}
+
+
+/* =========================================
+   SECURITY POPUP
+========================================= */
+
+function openSecurity() {
+
+  const modal =
+    document.getElementById(
+      "securityModal"
+    );
+
+  modal.style.display = "flex";
+
+}
+
+
+function closeSecurity() {
+
+  const modal =
+    document.getElementById(
+      "securityModal"
+    );
+
+  modal.style.display = "none";
+
+}
+
+
+/* =========================================
+   CHANGE PASSWORD
+========================================= */
+
+const passwordForm =
+  document.getElementById(
+    "passwordForm"
+  );
+
+
+if (passwordForm) {
+
+  passwordForm.addEventListener(
+    "submit",
+    function(event) {
+
+      event.preventDefault();
+
+
+      const currentPassword =
+        document.getElementById(
+          "currentPassword"
+        ).value;
+
+
+      const newPassword =
+        document.getElementById(
+          "newPassword"
+        ).value;
+
+
+      const confirmPassword =
+        document.getElementById(
+          "confirmPassword"
+        ).value;
+
+
+      const message =
+        document.getElementById(
+          "passwordMessage"
+        );
+
+
+      /* CURRENT PASSWORD */
+
+      const savedPassword =
+        localStorage.getItem(
+          "bq_admin_password"
+        ) || "BQAdmin@2026";
+
+
+      if (
+        currentPassword !==
+        savedPassword
+      ) {
+
+        message.textContent =
+          "Current password is incorrect.";
+
+        message.style.color =
+          "#dc2626";
+
+        return;
+
+      }
+
+
+      /* PASSWORD LENGTH */
+
+      if (
+        newPassword.length < 8
+      ) {
+
+        message.textContent =
+          "New password must be at least 8 characters.";
+
+        message.style.color =
+          "#dc2626";
+
+        return;
+
+      }
+
+
+      /* SAME PASSWORD CHECK */
+
+      if (
+        newPassword ===
+        currentPassword
+      ) {
+
+        message.textContent =
+          "New password must be different from the current password.";
+
+        message.style.color =
+          "#dc2626";
+
+        return;
+
+      }
+
+
+      /* CONFIRM PASSWORD */
+
+      if (
+        newPassword !==
+        confirmPassword
+      ) {
+
+        message.textContent =
+          "New passwords do not match.";
+
+        message.style.color =
+          "#dc2626";
+
+        return;
+
+      }
+
+
+      /* SAVE NEW PASSWORD */
+
+      localStorage.setItem(
+        "bq_admin_password",
+        newPassword
+      );
+
+
+      message.textContent =
+        "✓ Password changed successfully.";
+
+      message.style.color =
+        "#15803d";
+
+
+      passwordForm.reset();
+
+    }
+  );
+
+}
+
+
+/* =========================================
+   UPDATE COUNTS
+========================================= */
+
+updateDashboardCounts();
+
+
+/* =========================================
+   PREVENT CACHED DASHBOARD AFTER LOGOUT
+========================================= */
+
+window.addEventListener(
+  "pageshow",
+  function() {
+
+    checkAdminAccess();
+
+  }
+);
+
+          </script>
+</body>
+</html>
